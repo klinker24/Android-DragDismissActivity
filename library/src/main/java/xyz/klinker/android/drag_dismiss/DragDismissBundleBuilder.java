@@ -24,6 +24,7 @@ public class DragDismissBundleBuilder {
     protected static final String EXTRA_THEME = "arg_base_theme";
     protected static final String EXTRA_PRIMARY_COLOR = "arg_primary_color";
     protected static final String EXTRA_TOOLBAR_TITLE = "arg_toolbar_title";
+    protected static final String EXTRA_SHOULD_SHOW_TOOLBAR = "arg_show_toolbar";
 
     public static final int DEFAULT_TOOLBAR_COLOR = -1;
 
@@ -34,6 +35,7 @@ public class DragDismissBundleBuilder {
     private Theme theme = Theme.DAY_NIGHT;
     private int primaryColor = DEFAULT_TOOLBAR_COLOR;
     private String toolbarTitle = null;
+    private boolean shouldShowToolbar = true;
 
     public Bundle build() {
         Bundle bundle = new Bundle();
@@ -41,6 +43,7 @@ public class DragDismissBundleBuilder {
         bundle.putString(EXTRA_TOOLBAR_TITLE, toolbarTitle);
         bundle.putString(EXTRA_THEME, theme.name());
         bundle.putInt(EXTRA_PRIMARY_COLOR, primaryColor);
+        bundle.putBoolean(EXTRA_SHOULD_SHOW_TOOLBAR, shouldShowToolbar);
 
         return bundle;
     }
@@ -57,6 +60,11 @@ public class DragDismissBundleBuilder {
 
     public DragDismissBundleBuilder setToolbarTitle(String title) {
         this.toolbarTitle = title;
+        return this;
+    }
+
+    public DragDismissBundleBuilder setShowToolbar(boolean showToolbar) {
+        this.shouldShowToolbar = showToolbar;
         return this;
     }
 }

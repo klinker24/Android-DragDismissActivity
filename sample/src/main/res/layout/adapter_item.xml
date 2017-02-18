@@ -21,5 +21,5 @@
     android:layout_width="match_parent"
     android:layout_height="54dp"
     android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"d
+    android:layout_marginEnd="16dp"
     android:gravity="center_vertical" />

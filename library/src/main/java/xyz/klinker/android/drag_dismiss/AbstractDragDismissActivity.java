@@ -17,6 +17,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
 
     protected int primaryColor;
     protected String toolbarTitle;
+    protected boolean shouldShowToolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
         }
 
+        this.shouldShowToolbar = extras.getBoolean(DragDismissBundleBuilder.EXTRA_SHOULD_SHOW_TOOLBAR);
         this.toolbarTitle = extras.getString(DragDismissBundleBuilder.EXTRA_TOOLBAR_TITLE);
         this.primaryColor = extras.getInt(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,
                 DragDismissBundleBuilder.DEFAULT_TOOLBAR_COLOR);
@@ -51,6 +53,10 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.dragdismiss_ic_close);
             getSupportActionBar().setTitle(toolbarTitle);
+        }
+
+        if (!shouldShowToolbar) {
+            toolbar.setVisibility(View.GONE);
         }
 
         View.OnClickListener sideClickListener = new View.OnClickListener() {

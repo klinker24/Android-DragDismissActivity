@@ -36,6 +36,7 @@ public class SampleActivity extends AppCompatActivity {
                 Bundle bundle = new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
                         .setToolbarTitle("Normal Activity Sample")
+                        .setShowToolbar(false)
                         .build();
 
                 Intent scrollable = new Intent(SampleActivity.this, SampleActivityScrollable.class);
@@ -50,6 +51,7 @@ public class SampleActivity extends AppCompatActivity {
                 Bundle bundle = new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
                         .setPrimaryColor(getResources().getColor(R.color.colorPrimary))
+                        .setShowToolbar(false)
                         .setToolbarTitle("Recycler Sample")
                         .build();
 
