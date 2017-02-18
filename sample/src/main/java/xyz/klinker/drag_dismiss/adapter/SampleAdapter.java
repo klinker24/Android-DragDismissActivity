@@ -18,12 +18,9 @@ package xyz.klinker.drag_dismiss.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import xyz.klinker.drag_dismiss.R;
-import xyz.klinker.drag_dismiss.adapter.SampleViewHolder;
 
 public class SampleAdapter extends RecyclerView.Adapter<SampleViewHolder> {
 

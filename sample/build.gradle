@@ -16,10 +16,6 @@
 
 apply plugin: 'com.android.application'
 
-def propsFile = rootProject.file('api_keys.properties')
-def apiKeys = new Properties()
-apiKeys.load(new FileInputStream(propsFile))
-
 android {
     compileSdkVersion Integer.parseInt(project.COMPILE_SDK)
     buildToolsVersion project.BUILD_TOOLS_VERSION
@@ -29,8 +25,6 @@ android {
         targetSdkVersion Integer.parseInt(project.TARGET_SDK)
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
-
-        buildConfigField("String", "API_KEY", "\"${apiKeys['API_KEY']}\"")
     }
 
     signingConfigs {
