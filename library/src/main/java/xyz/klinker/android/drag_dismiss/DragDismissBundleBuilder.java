@@ -16,7 +16,6 @@
 
 package xyz.klinker.android.drag_dismiss;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 public class DragDismissBundleBuilder {
@@ -26,14 +25,14 @@ public class DragDismissBundleBuilder {
     protected static final String EXTRA_TOOLBAR_TITLE = "arg_toolbar_title";
     protected static final String EXTRA_SHOULD_SHOW_TOOLBAR = "arg_show_toolbar";
 
-    public static final int DEFAULT_TOOLBAR_COLOR = -1;
+    public static final int DEFAULT_TOOLBAR_RESOURCE = R.color.dragdismiss_toolbarBackground;
 
     public enum Theme {
         LIGHT, DARK, DAY_NIGHT
     }
 
     private Theme theme = Theme.DAY_NIGHT;
-    private int primaryColor = DEFAULT_TOOLBAR_COLOR;
+    private int primaryColorResource = DEFAULT_TOOLBAR_RESOURCE;
     private String toolbarTitle = null;
     private boolean shouldShowToolbar = true;
 
@@ -42,7 +41,7 @@ public class DragDismissBundleBuilder {
 
         bundle.putString(EXTRA_TOOLBAR_TITLE, toolbarTitle);
         bundle.putString(EXTRA_THEME, theme.name());
-        bundle.putInt(EXTRA_PRIMARY_COLOR, primaryColor);
+        bundle.putInt(EXTRA_PRIMARY_COLOR, primaryColorResource);
         bundle.putBoolean(EXTRA_SHOULD_SHOW_TOOLBAR, shouldShowToolbar);
 
         return bundle;
@@ -53,8 +52,8 @@ public class DragDismissBundleBuilder {
         return this;
     }
 
-    public DragDismissBundleBuilder setPrimaryColor(int primaryColor) {
-        this.primaryColor = primaryColor;
+    public DragDismissBundleBuilder setPrimaryColorResource(int primaryColor) {
+        this.primaryColorResource = primaryColor;
         return this;
     }
 

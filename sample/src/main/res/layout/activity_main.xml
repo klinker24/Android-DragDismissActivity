@@ -44,6 +44,13 @@
         android:text="@string/dark_theme"/>
 
     <Button
+        android:id="@+id/dark_colored"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dark_colored"/>
+
+    <Button
         android:id="@+id/hide_toolbar"
         android:gravity="center"
         android:layout_width="match_parent"

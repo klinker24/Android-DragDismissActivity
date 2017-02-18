@@ -35,7 +35,7 @@ public class SampleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle bundle = new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
-                        .setPrimaryColor(getResources().getColor(R.color.colorPrimary))
+                        .setPrimaryColorResource(R.color.colorPrimary)
                         .setToolbarTitle("Normal Activity Sample")
                         .build();
 
@@ -59,12 +59,27 @@ public class SampleActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.dark_colored).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new DragDismissBundleBuilder()
+                        .setTheme(DragDismissBundleBuilder.Theme.DARK)
+                        .setPrimaryColorResource(R.color.colorPrimary)
+                        .setToolbarTitle("Dark and Colored Sample")
+                        .build();
+
+                Intent scrollable = new Intent(SampleActivity.this, SampleActivityScrollable.class);
+                scrollable.putExtras(bundle);
+                startActivity(scrollable);
+            }
+        });
+
         findViewById(R.id.hide_toolbar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
-                        .setPrimaryColor(getResources().getColor(R.color.colorPrimary))
+                        .setPrimaryColorResource(R.color.colorPrimary)
                         .setShowToolbar(false)
                         .setToolbarTitle("Hidden Toolbar Sample")
                         .build();
@@ -80,7 +95,7 @@ public class SampleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle bundle = new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
-                        .setPrimaryColor(getResources().getColor(R.color.colorPrimary))
+                        .setPrimaryColorResource(R.color.colorPrimary)
                         .setShowToolbar(true)
                         .setToolbarTitle("RecyclerView Sample")
                         .build();

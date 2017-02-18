@@ -1,10 +1,8 @@
 package xyz.klinker.android.drag_dismiss;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,8 +37,10 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
 
         this.shouldShowToolbar = extras.getBoolean(DragDismissBundleBuilder.EXTRA_SHOULD_SHOW_TOOLBAR);
         this.toolbarTitle = extras.getString(DragDismissBundleBuilder.EXTRA_TOOLBAR_TITLE);
-        this.primaryColor = extras.getInt(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,
-                DragDismissBundleBuilder.DEFAULT_TOOLBAR_COLOR);
+        this.primaryColor = getResources().getColor(
+                extras.getInt(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,
+                        DragDismissBundleBuilder.DEFAULT_TOOLBAR_RESOURCE)
+        );
 
         setContentView(getLayout());
 
