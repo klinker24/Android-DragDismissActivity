@@ -1,4 +1,4 @@
-package xyz.klinker.android.drag_dismiss;
+package xyz.klinker.android.drag_dismiss.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import xyz.klinker.android.drag_dismiss.DragDismissBundleBuilder;
+import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
+
+/**
+ * This is the common logic for the DragDismissableActivity and DragDismissableRecyclerViewActivity.
+ * <p/>
+ * You shouldn't extend this activity, you should extend its subclasses.
+ */
 public abstract class AbstractDragDismissActivity extends AppCompatActivity {
+
     protected abstract int getLayout();
 
     protected Toolbar toolbar;

@@ -14,19 +14,23 @@
  * limitations under the License.
  */
 
-package xyz.klinker.android.drag_dismiss;
+package xyz.klinker.android.drag_dismiss.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
 
-public abstract class DragDismissRecyclerActivity extends AbstractDragDismissActivity {
+import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.util.RecyclerViewUtils;
+import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
+
+/**
+ * Activity that allows you to drag and dismiss a RecyclerView, whenever you reach the top or
+ * the bottom of the list.
+ * <p/>
+ * You will have to set up the RecyclerView in the abstract setupRecyclerView method. Within that
+ * method, you should set the adapter and the LayoutManager.
+ */
+public abstract class DragDismissRecyclerViewActivity extends AbstractDragDismissActivity {
 
     protected abstract void setupRecyclerView(RecyclerView recyclerView);
 
@@ -38,7 +42,7 @@ public abstract class DragDismissRecyclerActivity extends AbstractDragDismissAct
 
         recyclerView = (RecyclerView) findViewById(R.id.dragdismiss_recycler);
         recyclerView.addOnScrollListener(new ToolbarScrollListener(toolbar, statusBar, primaryColor));
-        Utils.changeRecyclerOverscrollColors(recyclerView, primaryColor);
+        RecyclerViewUtils.changeRecyclerOverscrollColors(recyclerView, primaryColor);
 
         setupRecyclerView(recyclerView);
     }

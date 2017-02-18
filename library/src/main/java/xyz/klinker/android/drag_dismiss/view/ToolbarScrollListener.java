@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package xyz.klinker.android.drag_dismiss;
+package xyz.klinker.android.drag_dismiss.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -28,11 +28,13 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 
+import xyz.klinker.android.drag_dismiss.R;
+
 /**
  * Scroll listener for interacting with the toolbar when the recyclerview scrolls. This includes
  * hiding the toolbar and showing it again when appropriate, along with changing the colors.
  */
-final class ToolbarScrollListener extends RecyclerView.OnScrollListener {
+public final class ToolbarScrollListener extends RecyclerView.OnScrollListener {
 
     private static final int ANIMATION_DURATION = 200; // ms
 
@@ -44,7 +46,7 @@ final class ToolbarScrollListener extends RecyclerView.OnScrollListener {
     private boolean isUpdatingTranslation = false;
     private boolean isUpdatingBackground = false;
 
-    ToolbarScrollListener(Toolbar toolbar, View statusBar, int primaryColor) {
+    public ToolbarScrollListener(Toolbar toolbar, View statusBar, int primaryColor) {
         this.toolbar = toolbar;
         this.statusBar = statusBar;
         this.primaryColor = primaryColor;

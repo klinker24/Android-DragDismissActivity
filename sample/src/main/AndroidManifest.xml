@@ -34,8 +34,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SampleActivityRecycler" android:theme="@style/DragDismissTheme" />
-        <activity android:name=".SampleActivityScrollable" android:theme="@style/DragDismissTheme" />
+        <activity android:name=".DismissableActivityRecyclerView" android:theme="@style/DragDismissTheme" />
+        <activity android:name=".DismissableActivityNormalContent" android:theme="@style/DragDismissTheme" />
 
     </application>
 

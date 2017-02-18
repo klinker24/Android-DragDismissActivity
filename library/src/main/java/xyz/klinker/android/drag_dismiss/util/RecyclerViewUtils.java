@@ -14,36 +14,25 @@
  * limitations under the License.
  */
 
-package xyz.klinker.android.drag_dismiss;
+package xyz.klinker.android.drag_dismiss.util;
 
 import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.RecyclerView;
 import android.widget.EdgeEffect;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.List;
 
 /**
  * Utilities we use, mostly for UI modification.
  */
-final class Utils {
+public final class RecyclerViewUtils {
 
     /**
      * Changes the overscroll highlight effect on a recyclerview to be the given color.
      */
-    static void changeRecyclerOverscrollColors(RecyclerView recyclerView, final int color) {
+    public static void changeRecyclerOverscrollColors(RecyclerView recyclerView, final int color) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             return;
         }

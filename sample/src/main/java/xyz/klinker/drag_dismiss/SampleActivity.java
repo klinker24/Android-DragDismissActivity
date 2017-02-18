@@ -39,7 +39,7 @@ public class SampleActivity extends AppCompatActivity {
                         .setToolbarTitle("Normal Activity Sample")
                         .build();
 
-                Intent scrollable = new Intent(SampleActivity.this, SampleActivityScrollable.class);
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
                 scrollable.putExtras(bundle);
                 startActivity(scrollable);
             }
@@ -53,7 +53,7 @@ public class SampleActivity extends AppCompatActivity {
                         .setToolbarTitle("Dark Sample")
                         .build();
 
-                Intent scrollable = new Intent(SampleActivity.this, SampleActivityScrollable.class);
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
                 scrollable.putExtras(bundle);
                 startActivity(scrollable);
             }
@@ -68,7 +68,7 @@ public class SampleActivity extends AppCompatActivity {
                         .setToolbarTitle("Dark and Colored Sample")
                         .build();
 
-                Intent scrollable = new Intent(SampleActivity.this, SampleActivityScrollable.class);
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
                 scrollable.putExtras(bundle);
                 startActivity(scrollable);
             }
@@ -84,7 +84,7 @@ public class SampleActivity extends AppCompatActivity {
                         .setToolbarTitle("Hidden Toolbar Sample")
                         .build();
 
-                Intent scrollable = new Intent(SampleActivity.this, SampleActivityScrollable.class);
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
                 scrollable.putExtras(bundle);
                 startActivity(scrollable);
             }
@@ -100,7 +100,7 @@ public class SampleActivity extends AppCompatActivity {
                         .setToolbarTitle("RecyclerView Sample")
                         .build();
 
-                Intent recycler = new Intent(SampleActivity.this, SampleActivityRecycler.class);
+                Intent recycler = new Intent(SampleActivity.this, DismissableActivityRecyclerView.class);
                 recycler.putExtras(bundle);
                 startActivity(recycler);
             }

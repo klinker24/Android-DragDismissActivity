@@ -1,4 +1,4 @@
-package xyz.klinker.android.drag_dismiss;
+package xyz.klinker.android.drag_dismiss.util;
 
 import android.graphics.Color;
 
@@ -6,7 +6,7 @@ import android.graphics.Color;
  * Class used to help with the Material Design Color palette, which is created
  * by lightening and darkening base colors.
  */
-public class ColorUtils {
+public final class ColorUtils {
 
     /**
      * When converting a material design primary color, to its darker version, we darken by 12.

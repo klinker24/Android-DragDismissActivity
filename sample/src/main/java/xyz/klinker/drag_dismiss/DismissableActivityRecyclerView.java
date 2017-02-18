@@ -16,23 +16,16 @@
 
 package xyz.klinker.drag_dismiss;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import xyz.klinker.android.drag_dismiss.DragDismissActivity;
+import xyz.klinker.android.drag_dismiss.activity.DragDismissRecyclerViewActivity;
+import xyz.klinker.drag_dismiss.adapter.SampleAdapter;
 
-public class SampleActivityScrollable extends DragDismissActivity {
-
+public class DismissableActivityRecyclerView extends DragDismissRecyclerViewActivity {
     @Override
-    protected View onCreateContent(LayoutInflater inflater, ViewGroup parent) {
-        View v = inflater.inflate(R.layout.activity_scrollable, parent, false);
-
-        if (!shouldShowToolbar) {
-            // don't need the padding that pushes it below the toolbar
-            v.findViewById(R.id.text_view).setPadding(0,0,0,0);
-        }
-
-        return v;
+    protected void setupRecyclerView(RecyclerView recyclerView) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new SampleAdapter());
     }
 }

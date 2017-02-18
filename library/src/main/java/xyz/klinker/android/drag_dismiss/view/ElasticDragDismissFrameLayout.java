@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package xyz.klinker.android.drag_dismiss;
+package xyz.klinker.android.drag_dismiss.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;

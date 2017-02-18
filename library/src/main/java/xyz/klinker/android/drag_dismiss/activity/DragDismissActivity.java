@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package xyz.klinker.android.drag_dismiss;
+package xyz.klinker.android.drag_dismiss.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,6 +22,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import xyz.klinker.android.drag_dismiss.DragDismissBundleBuilder;
+import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.util.ColorUtils;
+
+/**
+ * An Activity that provides a Toolbar and drag-dismiss functionality for free. This Activity allows
+ * you to add any content you want. Your content will be housed in a NestedScrollView, so you shouldn't
+ * worry about the height of the content.
+ */
 public abstract class DragDismissActivity extends AbstractDragDismissActivity {
 
     protected abstract View onCreateContent(LayoutInflater inflater, ViewGroup parent);
