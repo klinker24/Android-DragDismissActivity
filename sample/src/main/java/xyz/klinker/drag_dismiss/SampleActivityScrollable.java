@@ -26,6 +26,13 @@ public class SampleActivityScrollable extends DragDismissActivity {
 
     @Override
     protected View onCreateContent(LayoutInflater inflater, ViewGroup parent) {
-        return inflater.inflate(R.layout.activity_scrollable, parent, false);
+        View v = inflater.inflate(R.layout.activity_scrollable, parent, false);
+
+        if (!shouldShowToolbar) {
+            // don't need the padding that pushes it below the toolbar
+            v.findViewById(R.id.text_view).setPadding(0,0,0,0);
+        }
+
+        return v;
     }
 }

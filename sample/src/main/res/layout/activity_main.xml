@@ -24,15 +24,31 @@
 
     <Button
         android:id="@+id/scrollable"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/scrollable"/>
 
     <Button
         android:id="@+id/recycler"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/recycler"/>
+
+    <Button
+        android:id="@+id/dark"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dark_theme"/>
+
+    <Button
+        android:id="@+id/hide_toolbar"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hidden_toolbar"/>
 
 </LinearLayout>
 
