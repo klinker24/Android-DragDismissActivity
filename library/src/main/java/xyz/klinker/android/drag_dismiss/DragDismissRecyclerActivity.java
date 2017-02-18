@@ -28,7 +28,7 @@ import android.view.View;
 
 public abstract class DragDismissRecyclerActivity extends AbstractDragDismissActivity {
 
-    protected abstract View setupRecyclerView(RecyclerView recyclerView);
+    protected abstract void setupRecyclerView(RecyclerView recyclerView);
 
     private RecyclerView recyclerView;
 

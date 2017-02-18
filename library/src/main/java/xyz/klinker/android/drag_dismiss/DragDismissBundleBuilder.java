@@ -25,12 +25,14 @@ public class DragDismissBundleBuilder {
     protected static final String EXTRA_PRIMARY_COLOR = "arg_primary_color";
     protected static final String EXTRA_TOOLBAR_TITLE = "arg_toolbar_title";
 
+    public static final int DEFAULT_TOOLBAR_COLOR = -1;
+
     public enum Theme {
         LIGHT, DARK, DAY_NIGHT
     }
 
     private Theme theme = Theme.DAY_NIGHT;
-    private int primaryColor = Color.BLACK;
+    private int primaryColor = DEFAULT_TOOLBAR_COLOR;
     private String toolbarTitle = null;
 
     public Bundle build() {
@@ -43,15 +45,18 @@ public class DragDismissBundleBuilder {
         return bundle;
     }
 
-    public void setTheme(Theme theme) {
+    public DragDismissBundleBuilder setTheme(Theme theme) {
         this.theme = theme;
+        return this;
     }
 
-    public void setPrimaryColor(int primaryColor) {
+    public DragDismissBundleBuilder setPrimaryColor(int primaryColor) {
         this.primaryColor = primaryColor;
+        return this;
     }
 
-    public void setToolbarTitle(String title) {
+    public DragDismissBundleBuilder setToolbarTitle(String title) {
         this.toolbarTitle = title;
+        return this;
     }
 }

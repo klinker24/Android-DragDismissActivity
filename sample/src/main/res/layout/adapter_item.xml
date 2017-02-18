@@ -16,23 +16,10 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/text_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp" >
-
-    <Button
-        android:id="@+id/scrollable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/scrollable"/>
-
-    <Button
-        android:id="@+id/recycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/recycler"/>
-
-</LinearLayout>
-
+    android:layout_height="54dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"d
+    android:gravity="center_vertical" />

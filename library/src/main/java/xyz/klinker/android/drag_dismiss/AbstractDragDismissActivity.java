@@ -37,21 +37,20 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
         }
 
         this.toolbarTitle = extras.getString(DragDismissBundleBuilder.EXTRA_TOOLBAR_TITLE);
-        this.primaryColor = extras.getInt(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR, Color.BLACK);
+        this.primaryColor = extras.getInt(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,
+                DragDismissBundleBuilder.DEFAULT_TOOLBAR_COLOR);
 
         setContentView(getLayout());
 
         toolbar = (Toolbar) findViewById(R.id.dragdismiss_toolbar);
-        toolbar.setBackgroundColor(primaryColor);
-        toolbar.setTitle(toolbarTitle);
-        setSupportActionBar(toolbar);
-
         statusBar = findViewById(R.id.dragdismiss_status_bar);
+
+        setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.dragdismiss_ic_close);
-            getSupportActionBar().setTitle(null);
+            getSupportActionBar().setTitle(toolbarTitle);
         }
 
         View.OnClickListener sideClickListener = new View.OnClickListener() {

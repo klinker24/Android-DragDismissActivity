@@ -42,7 +42,9 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/dragdismiss_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                app:behavior_overlapTop="?attr/actionBarSize" />
 
             <View
                 android:layout_width="match_parent"

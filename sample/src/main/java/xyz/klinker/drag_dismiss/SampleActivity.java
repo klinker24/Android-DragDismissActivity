@@ -16,16 +16,49 @@
 
 package xyz.klinker.drag_dismiss;
 
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 
-import xyz.klinker.android.drag_dismiss.DragDismissActivity;
+import xyz.klinker.android.drag_dismiss.DragDismissBundleBuilder;
 
-public class SampleActivity extends DragDismissActivity {
-
+public class SampleActivity extends AppCompatActivity {
     @Override
-    protected View onCreateContent(LayoutInflater inflater, ViewGroup parent) {
-        return inflater.inflate(R.layout.activity_main, parent, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        findViewById(R.id.scrollable).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new DragDismissBundleBuilder()
+                        .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
+                        .setToolbarTitle("Normal Activity Sample")
+                        .build();
+
+                Intent scrollable = new Intent(SampleActivity.this, SampleActivityScrollable.class);
+                scrollable.putExtras(bundle);
+                startActivity(scrollable);
+            }
+        });
+
+        findViewById(R.id.recycler).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new DragDismissBundleBuilder()
+                        .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
+                        .setPrimaryColor(getResources().getColor(R.color.colorPrimary))
+                        .setToolbarTitle("Recycler Sample")
+                        .build();
+
+                Intent recycler = new Intent(SampleActivity.this, SampleActivityRecycler.class);
+                recycler.putExtras(bundle);
+                startActivity(recycler);
+            }
+        });
     }
 }
+
+

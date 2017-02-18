@@ -42,12 +42,14 @@
             <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true">
+                android:fillViewport="true"
+                android:overScrollMode="never" >
 
                 <FrameLayout
                     android:id="@+id/dragdismiss_content"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:paddingTop="24dp"/>
 
             </android.support.v4.widget.NestedScrollView>
 

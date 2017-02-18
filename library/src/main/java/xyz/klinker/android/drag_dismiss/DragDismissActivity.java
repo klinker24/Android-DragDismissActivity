@@ -36,6 +36,11 @@ public abstract class DragDismissActivity extends AbstractDragDismissActivity {
     public final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (primaryColor != DragDismissBundleBuilder.DEFAULT_TOOLBAR_COLOR) {
+            toolbar.setBackgroundColor(primaryColor);
+            statusBar.setBackgroundColor(ColorUtils.darkenPrimaryColor(primaryColor));
+        }
+
         FrameLayout elasticContent = (FrameLayout) findViewById(R.id.dragdismiss_content);
         elasticContent.addView(onCreateContent(getLayoutInflater(), elasticContent));
     }
