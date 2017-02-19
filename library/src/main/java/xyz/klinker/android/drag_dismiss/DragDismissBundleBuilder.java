@@ -31,10 +31,10 @@ public class DragDismissBundleBuilder {
     public static final int DEFAULT_TOOLBAR_RESOURCE = R.color.dragdismiss_toolbarBackground;
 
     public enum Theme {
-        LIGHT, DARK, DAY_NIGHT
+        LIGHT, DARK, BLACK, DAY_NIGHT
     }
 
-    private Theme theme = Theme.DAY_NIGHT;
+    private Theme theme = Theme.LIGHT;
     private int primaryColorResource = DEFAULT_TOOLBAR_RESOURCE;
     private String toolbarTitle = null;
     private boolean shouldShowToolbar = true;

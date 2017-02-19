@@ -37,6 +37,13 @@
         android:text="@string/recycler"/>
 
     <Button
+        android:id="@+id/black"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/black_theme"/>
+
+    <Button
         android:id="@+id/dark"
         android:gravity="center"
         android:layout_width="match_parent"

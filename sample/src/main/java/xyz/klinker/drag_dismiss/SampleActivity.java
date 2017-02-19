@@ -45,6 +45,36 @@ public class SampleActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.recycler).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new DragDismissBundleBuilder()
+                        .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
+                        .setPrimaryColorResource(R.color.colorPrimary)
+                        .setShowToolbar(true)
+                        .setToolbarTitle("RecyclerView Sample")
+                        .build();
+
+                Intent recycler = new Intent(SampleActivity.this, DismissableActivityRecyclerView.class);
+                recycler.putExtras(bundle);
+                startActivity(recycler);
+            }
+        });
+
+        findViewById(R.id.black).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new DragDismissBundleBuilder()
+                        .setTheme(DragDismissBundleBuilder.Theme.BLACK)
+                        .setToolbarTitle("Black Sample")
+                        .build();
+
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
+                scrollable.putExtras(bundle);
+                startActivity(scrollable);
+            }
+        });
+
         findViewById(R.id.dark).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,22 +117,6 @@ public class SampleActivity extends AppCompatActivity {
                 Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
                 scrollable.putExtras(bundle);
                 startActivity(scrollable);
-            }
-        });
-
-        findViewById(R.id.recycler).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new DragDismissBundleBuilder()
-                        .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
-                        .setPrimaryColorResource(R.color.colorPrimary)
-                        .setShowToolbar(true)
-                        .setToolbarTitle("RecyclerView Sample")
-                        .build();
-
-                Intent recycler = new Intent(SampleActivity.this, DismissableActivityRecyclerView.class);
-                recycler.putExtras(bundle);
-                startActivity(recycler);
             }
         });
     }

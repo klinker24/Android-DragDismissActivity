@@ -19,6 +19,7 @@
 
     <string name="scrollable">Normal Activity</string>
     <string name="recycler">RecyclerView Activity</string>
+    <string name="black_theme">Black Theme</string>
     <string name="dark_theme">Dark Theme</string>
     <string name="dark_colored">Dark and Colored Theme</string>
     <string name="hidden_toolbar">Hidden Toolbar</string>

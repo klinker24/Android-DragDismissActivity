@@ -35,6 +35,7 @@
 
         <android.support.design.widget.CoordinatorLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/dragdismiss_background_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/dragdismiss_windowBackground">

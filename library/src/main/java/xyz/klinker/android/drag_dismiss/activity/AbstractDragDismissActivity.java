@@ -1,5 +1,6 @@
 package xyz.klinker.android.drag_dismiss.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
@@ -41,6 +42,8 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         } else if (DragDismissBundleBuilder.Theme.DARK.name().equals(theme)) {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else if (DragDismissBundleBuilder.Theme.BLACK.name().equals(theme)) {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
         }
@@ -67,6 +70,10 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
 
         if (!shouldShowToolbar) {
             toolbar.setVisibility(View.GONE);
+        }
+
+        if (DragDismissBundleBuilder.Theme.BLACK.name().equals(theme)) {
+            findViewById(R.id.dragdismiss_background_view).setBackgroundColor(Color.BLACK);
         }
 
         View.OnClickListener sideClickListener = new View.OnClickListener() {
