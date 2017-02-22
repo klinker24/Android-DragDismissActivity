@@ -35,7 +35,7 @@ public class SampleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
 
-                new DragDismissBundleBuilder()
+                new DragDismissBundleBuilder(SampleActivity.this)
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setToolbarTitle("Normal Activity Sample")
@@ -50,7 +50,7 @@ public class SampleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent recycler = new Intent(SampleActivity.this, DismissableActivityRecyclerView.class);
 
-                new DragDismissBundleBuilder()
+                new DragDismissBundleBuilder(SampleActivity.this)
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setShowToolbar(true)
@@ -66,7 +66,7 @@ public class SampleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
 
-                new DragDismissBundleBuilder()
+                new DragDismissBundleBuilder(SampleActivity.this)
                         .setTheme(DragDismissBundleBuilder.Theme.BLACK)
                         .setToolbarTitle("Black Sample")
                         .build(scrollable);
@@ -80,7 +80,7 @@ public class SampleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
 
-                new DragDismissBundleBuilder()
+                new DragDismissBundleBuilder(SampleActivity.this)
                         .setTheme(DragDismissBundleBuilder.Theme.DARK)
                         .setToolbarTitle("Dark Sample")
                         .build(scrollable);
@@ -94,7 +94,7 @@ public class SampleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
 
-                new DragDismissBundleBuilder()
+                new DragDismissBundleBuilder(SampleActivity.this)
                         .setTheme(DragDismissBundleBuilder.Theme.DARK)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setToolbarTitle("Dark and Colored Sample")
@@ -109,7 +109,7 @@ public class SampleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
 
-                new DragDismissBundleBuilder()
+                new DragDismissBundleBuilder(SampleActivity.this)
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setShowToolbar(false)

@@ -45,10 +45,8 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
 
         this.shouldShowToolbar = getIntent().getBooleanExtra(DragDismissBundleBuilder.EXTRA_SHOULD_SHOW_TOOLBAR, true);
         this.toolbarTitle = getIntent().getStringExtra(DragDismissBundleBuilder.EXTRA_TOOLBAR_TITLE);
-        this.primaryColor = getResources().getColor(
-                getIntent().getIntExtra(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,
-                        DragDismissBundleBuilder.DEFAULT_TOOLBAR_RESOURCE)
-        );
+        this.primaryColor = getIntent().getIntExtra(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,
+                        DragDismissBundleBuilder.DEFAULT_TOOLBAR_RESOURCE);
 
         setContentView(getLayout());
 

@@ -16,6 +16,7 @@
 
 package xyz.klinker.android.drag_dismiss;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -36,9 +37,15 @@ public class DragDismissBundleBuilder {
     }
 
     private Theme theme = Theme.LIGHT;
-    private int primaryColorResource = DEFAULT_TOOLBAR_RESOURCE;
+    private int primaryColor = -1;
     private String toolbarTitle = null;
     private boolean shouldShowToolbar = true;
+
+    private Context context;
+
+    public DragDismissBundleBuilder(Context context) {
+        this.context = context;
+    }
 
     /**
      * Create the Bundle to pass to with the Intent.
@@ -46,9 +53,13 @@ public class DragDismissBundleBuilder {
      * @return bundle describing how the Activity should be initialized
      */
     public Intent build(Intent intentToBuildOn) {
+        if (primaryColor == -1) {
+            primaryColor = context.getResources().getColor(DEFAULT_TOOLBAR_RESOURCE);
+        }
+
         intentToBuildOn.putExtra(EXTRA_TOOLBAR_TITLE, toolbarTitle);
         intentToBuildOn.putExtra(EXTRA_THEME, theme.name());
-        intentToBuildOn.putExtra(EXTRA_PRIMARY_COLOR, primaryColorResource);
+        intentToBuildOn.putExtra(EXTRA_PRIMARY_COLOR, primaryColor);
         intentToBuildOn.putExtra(EXTRA_SHOULD_SHOW_TOOLBAR, shouldShowToolbar);
 
         return intentToBuildOn;
@@ -72,7 +83,18 @@ public class DragDismissBundleBuilder {
      * @return the builder.
      */
     public DragDismissBundleBuilder setPrimaryColorResource(int primaryColor) {
-        this.primaryColorResource = primaryColor;
+        this.primaryColor = context.getResources().getColor(primaryColor);
+        return this;
+    }
+
+    /**
+     * Set the primary color for the Activity.
+     *
+     * @param primaryColor the color resource for the toolbar and the status bar.
+     * @return the builder.
+     */
+    public DragDismissBundleBuilder setPrimaryColorValue(int primaryColor) {
+        this.primaryColor = primaryColor;
         return this;
     }
 

@@ -78,7 +78,7 @@ I have provided a [DragDismissBundleBuilder](https://github.com/klinker24/Androi
 ```java
 Intent dragDismissActivity = new Intent(this, MyDragDismissActivity.class);
 
-new DragDismissBundleBuilder()
+new DragDismissBundleBuilder(context)
     .setTheme(DragDismissBundleBuilder.Theme.LIGHT)	// LIGHT (default), DARK, BLACK, DAY_NIGHT
     .setPrimaryColorResource(R.color.colorPrimary)	// defaults to a semi-transparent black
     .setToolbarTitle("Normal Activity Sample")		// defaults to null
