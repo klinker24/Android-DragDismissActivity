@@ -19,7 +19,7 @@ To include it in your project, add this to your module's `build.gradle` file:
 ```groovy
 dependencies {
 	...
-	compile 'com.klinkerapps:drag-dismiss-activity:0.0.1-SNAPSHOT'
+	compile 'com.klinkerapps:drag-dismiss-activity:0.0.5-SNAPSHOT'
 }
 ```
 
@@ -83,6 +83,7 @@ new DragDismissBundleBuilder(context)
     .setPrimaryColorResource(R.color.colorPrimary)	// defaults to a semi-transparent black
     .setToolbarTitle("Normal Activity Sample")		// defaults to null
     .setShowToolbar(true)				// defaults to true
+    .setShouldScrollToolbar(true)       // defaults to true
     .build(dragDismissActivity);
 
 // do anything else that you want to set up the Intent
