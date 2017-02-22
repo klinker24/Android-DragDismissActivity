@@ -217,6 +217,11 @@ public class ElasticDragDismissFrameLayout extends FrameLayout {
         callbacks.add(listener);
     }
 
+    public void setListener(ElasticDragDismissCallback listener) {
+        callbacks = new ArrayList<>();
+        callbacks.add(listener);
+    }
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
