@@ -17,6 +17,7 @@
 package xyz.klinker.android.drag_dismiss.activity;
 
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import android.widget.FrameLayout;
 import xyz.klinker.android.drag_dismiss.DragDismissBundleBuilder;
 import xyz.klinker.android.drag_dismiss.R;
 import xyz.klinker.android.drag_dismiss.util.ColorUtils;
+import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
 
 /**
  * An Activity that provides a Toolbar and drag-dismiss functionality for free. This Activity allows
@@ -39,7 +41,10 @@ public abstract class DragDismissActivity extends AbstractDragDismissActivity {
     public final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (primaryColor != getResources().getColor(DragDismissBundleBuilder.DEFAULT_TOOLBAR_RESOURCE)) {
+        if (shouldScrollToolbar && shouldShowToolbar) {
+            NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.dragdismiss_scroll_view);
+            scrollView.setOnScrollChangeListener(new ToolbarScrollListener(toolbar, statusBar, primaryColor));
+        } else {
             toolbar.setBackgroundColor(primaryColor);
             statusBar.setBackgroundColor(primaryColor);
         }

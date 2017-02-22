@@ -27,6 +27,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
     protected int primaryColor;
     protected String toolbarTitle;
     protected boolean shouldShowToolbar;
+    protected boolean shouldScrollToolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
         }
 
+        this.shouldScrollToolbar = getIntent().getBooleanExtra(DragDismissBundleBuilder.EXTRA_SHOULD_SCROLL_TOOLBAR, true);
         this.shouldShowToolbar = getIntent().getBooleanExtra(DragDismissBundleBuilder.EXTRA_SHOULD_SHOW_TOOLBAR, true);
         this.toolbarTitle = getIntent().getStringExtra(DragDismissBundleBuilder.EXTRA_TOOLBAR_TITLE);
         this.primaryColor = getIntent().getIntExtra(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,

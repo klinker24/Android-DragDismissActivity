@@ -19,6 +19,7 @@ package xyz.klinker.android.drag_dismiss.activity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
+import xyz.klinker.android.drag_dismiss.DragDismissBundleBuilder;
 import xyz.klinker.android.drag_dismiss.R;
 import xyz.klinker.android.drag_dismiss.util.RecyclerViewUtils;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
@@ -34,16 +35,20 @@ public abstract class DragDismissRecyclerViewActivity extends AbstractDragDismis
 
     protected abstract void setupRecyclerView(RecyclerView recyclerView);
 
-    private RecyclerView recyclerView;
-
     @Override
     public final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        recyclerView = (RecyclerView) findViewById(R.id.dragdismiss_recycler);
-        recyclerView.addOnScrollListener(new ToolbarScrollListener(toolbar, statusBar, primaryColor));
-        RecyclerViewUtils.changeRecyclerOverscrollColors(recyclerView, primaryColor);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.dragdismiss_recycler);
 
+        if (shouldScrollToolbar && shouldShowToolbar) {
+            recyclerView.addOnScrollListener(new ToolbarScrollListener(toolbar, statusBar, primaryColor));
+        } else {
+            toolbar.setBackgroundColor(primaryColor);
+            statusBar.setBackgroundColor(primaryColor);
+        }
+
+        RecyclerViewUtils.changeRecyclerOverscrollColors(recyclerView, primaryColor);
         setupRecyclerView(recyclerView);
     }
 

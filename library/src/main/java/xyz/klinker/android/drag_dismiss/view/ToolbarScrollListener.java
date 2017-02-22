@@ -20,9 +20,12 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.os.Handler;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -34,7 +37,7 @@ import xyz.klinker.android.drag_dismiss.R;
  * Scroll listener for interacting with the toolbar when the recyclerview scrolls. This includes
  * hiding the toolbar and showing it again when appropriate, along with changing the colors.
  */
-public final class ToolbarScrollListener extends RecyclerView.OnScrollListener {
+public final class ToolbarScrollListener extends RecyclerView.OnScrollListener implements NestedScrollView.OnScrollChangeListener {
 
     private static final int ANIMATION_DURATION = 200; // ms
 
@@ -46,12 +49,21 @@ public final class ToolbarScrollListener extends RecyclerView.OnScrollListener {
     private boolean isUpdatingTranslation = false;
     private boolean isUpdatingBackground = false;
 
+    private Handler toolbarHandler;
+    private int minDistance;
+    private int topOffset;
+
     public ToolbarScrollListener(Toolbar toolbar, View statusBar, int primaryColor) {
         this.toolbar = toolbar;
         this.statusBar = statusBar;
         this.primaryColor = primaryColor;
         this.transparentColor = toolbar.getContext().getResources()
                 .getColor(R.color.dragdismiss_toolbarBackground);
+
+        this.minDistance = toolbar.getContext().getResources()
+                .getDimensionPixelSize(R.dimen.dragdismiss_minToolbarScroll);
+        this.topOffset = toolbar.getContext().getResources()
+                .getDimensionPixelSize(R.dimen.dragdismiss_scrollViewTop);
     }
 
     @Override
@@ -71,8 +83,6 @@ public final class ToolbarScrollListener extends RecyclerView.OnScrollListener {
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
 
-        int minDistance = toolbar.getContext().getResources()
-                .getDimensionPixelSize(R.dimen.dragdismiss_minToolbarScroll);
         if (Math.abs(dy) < minDistance) {
             return;
         }
@@ -101,6 +111,46 @@ public final class ToolbarScrollListener extends RecyclerView.OnScrollListener {
                 animateBackgroundColor(primaryColor, transparentColor, interpolator);
                 transparentBackground = true;
             }
+        }
+    }
+
+
+    @Override
+    public void onScrollChange(final NestedScrollView scrollView, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+        int dy = scrollY - oldScrollY;
+
+        if (dy > 0 && toolbar.getTranslationY() == 0) {
+            final Interpolator interpolator = new AccelerateInterpolator();
+
+            if (!isUpdatingTranslation) {
+                animateTranslation(-1 * toolbar.getHeight(), interpolator);
+            }
+
+            if (transparentBackground && !isUpdatingBackground) {
+                animateBackgroundColor(transparentColor, primaryColor, interpolator);
+                transparentBackground = false;
+            }
+        } else if (dy < 0 && toolbar.getTranslationY() != 0) {
+            final Interpolator interpolator = new DecelerateInterpolator();
+
+            if (!isUpdatingTranslation) {
+                animateTranslation(0, interpolator);
+            }
+
+            if (toolbarHandler == null) {
+                this.toolbarHandler = toolbar.getHandler();
+            }
+
+            toolbarHandler.removeCallbacksAndMessages(null);
+            toolbarHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!transparentBackground && scrollView.getScrollY() < topOffset && !isUpdatingBackground) {
+                        animateBackgroundColor(primaryColor, transparentColor, interpolator);
+                        transparentBackground = true;
+                    }
+                }
+            }, ANIMATION_DURATION);
         }
     }
 
@@ -144,5 +194,4 @@ public final class ToolbarScrollListener extends RecyclerView.OnScrollListener {
         anim.start();
         isUpdatingBackground = true;
     }
-
 }

@@ -25,10 +25,11 @@ import android.os.Bundle;
  */
 public class DragDismissBundleBuilder {
 
-    public static final String EXTRA_THEME = "arg_base_theme";
-    public static final String EXTRA_PRIMARY_COLOR = "arg_primary_color";
-    public static final String EXTRA_TOOLBAR_TITLE = "arg_toolbar_title";
-    public static final String EXTRA_SHOULD_SHOW_TOOLBAR = "arg_show_toolbar";
+    public static final String EXTRA_THEME = "extra_base_theme";
+    public static final String EXTRA_PRIMARY_COLOR = "extra_primary_color";
+    public static final String EXTRA_TOOLBAR_TITLE = "extra_toolbar_title";
+    public static final String EXTRA_SHOULD_SHOW_TOOLBAR = "extra_show_toolbar";
+    public static final String EXTRA_SHOULD_SCROLL_TOOLBAR = "extra_scroll_toolbar";
 
     public static final int DEFAULT_TOOLBAR_RESOURCE = R.color.dragdismiss_toolbarBackground;
 
@@ -40,6 +41,7 @@ public class DragDismissBundleBuilder {
     private int primaryColor = -1;
     private String toolbarTitle = null;
     private boolean shouldShowToolbar = true;
+    private boolean shouldScrollToolbar = true;
 
     private Context context;
 
@@ -61,6 +63,7 @@ public class DragDismissBundleBuilder {
         intentToBuildOn.putExtra(EXTRA_THEME, theme.name());
         intentToBuildOn.putExtra(EXTRA_PRIMARY_COLOR, primaryColor);
         intentToBuildOn.putExtra(EXTRA_SHOULD_SHOW_TOOLBAR, shouldShowToolbar);
+        intentToBuildOn.putExtra(EXTRA_SHOULD_SCROLL_TOOLBAR, shouldScrollToolbar);
 
         return intentToBuildOn;
     }
@@ -117,6 +120,17 @@ public class DragDismissBundleBuilder {
      */
     public DragDismissBundleBuilder setShowToolbar(boolean showToolbar) {
         this.shouldShowToolbar = showToolbar;
+        return this;
+    }
+
+    /**
+     * Set whether or not the Toolbar should scroll on and off the activity.
+     *
+     * @param scrollToolbar
+     * @return the builder.
+     */
+    public DragDismissBundleBuilder setShouldScrollToolbar(boolean scrollToolbar) {
+        this.shouldScrollToolbar = scrollToolbar;
         return this;
     }
 }

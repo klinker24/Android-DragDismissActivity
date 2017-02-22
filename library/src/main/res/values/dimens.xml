@@ -21,4 +21,5 @@
     <dimen name="dragdismiss_minToolbarScroll">4dp</dimen>
     <dimen name="dragdismiss_articleWidth">-1px</dimen> <!-- match_parent -->
     <dimen name="dragdismiss_dragDownDismissDistance">192dp</dimen>
+    <dimen name="dragdismiss_scrollViewTop">300dp</dimen>
 </resources>
