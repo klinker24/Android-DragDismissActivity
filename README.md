@@ -76,17 +76,16 @@ After implementing the steps above, you will get your old `Activity`, with drag-
 I have provided a [DragDismissBundleBuilder](https://github.com/klinker24/Android-DragDismissActivity/blob/master/library/src/main/java/xyz/klinker/android/drag_dismiss/DragDismissBundleBuilder.java) that allows you to add customization to the `DragDismissActivity` through extras on an `Intent`:
 
 ```java
-Bundle bundle = new DragDismissBundleBuilder()
+Intent dragDismissActivity = new Intent(this, MyDragDismissActivity.class);
+
+new DragDismissBundleBuilder()
     .setTheme(DragDismissBundleBuilder.Theme.LIGHT)	// LIGHT (default), DARK, BLACK, DAY_NIGHT
     .setPrimaryColorResource(R.color.colorPrimary)	// defaults to a semi-transparent black
     .setToolbarTitle("Normal Activity Sample")		// defaults to null
     .setShowToolbar(true)				// defaults to true
-    .build();
+    .build(dragDismissActivity);
 
-Intent dragDismissActivity = new Intent(this, MyDragDismissActivity.class);
-dragDismissActivity.putExtras(bundle);
-
-// add the rest of your extras to the activity
+// do anything else that you want to set up the Intent
 // dragDismissActivity.putBoolean("test_bool", true);
 
 startActivity(dragDismissActivity);

@@ -32,12 +32,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras == null) {
-            extras = new Bundle();
-        }
-
-        String theme = extras.getString(DragDismissBundleBuilder.EXTRA_THEME);
+        String theme = getIntent().getStringExtra(DragDismissBundleBuilder.EXTRA_THEME);
         if (DragDismissBundleBuilder.Theme.LIGHT.name().equals(theme)) {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         } else if (DragDismissBundleBuilder.Theme.DARK.name().equals(theme)) {
@@ -48,10 +43,10 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
         }
 
-        this.shouldShowToolbar = extras.getBoolean(DragDismissBundleBuilder.EXTRA_SHOULD_SHOW_TOOLBAR);
-        this.toolbarTitle = extras.getString(DragDismissBundleBuilder.EXTRA_TOOLBAR_TITLE);
+        this.shouldShowToolbar = getIntent().getBooleanExtra(DragDismissBundleBuilder.EXTRA_SHOULD_SHOW_TOOLBAR, true);
+        this.toolbarTitle = getIntent().getStringExtra(DragDismissBundleBuilder.EXTRA_TOOLBAR_TITLE);
         this.primaryColor = getResources().getColor(
-                extras.getInt(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,
+                getIntent().getIntExtra(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,
                         DragDismissBundleBuilder.DEFAULT_TOOLBAR_RESOURCE)
         );
 

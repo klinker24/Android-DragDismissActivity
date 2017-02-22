@@ -16,6 +16,7 @@
 
 package xyz.klinker.android.drag_dismiss;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 /**
@@ -44,15 +45,13 @@ public class DragDismissBundleBuilder {
      *
      * @return bundle describing how the Activity should be initialized
      */
-    public Bundle build() {
-        Bundle bundle = new Bundle();
+    public Intent build(Intent intentToBuildOn) {
+        intentToBuildOn.putExtra(EXTRA_TOOLBAR_TITLE, toolbarTitle);
+        intentToBuildOn.putExtra(EXTRA_THEME, theme.name());
+        intentToBuildOn.putExtra(EXTRA_PRIMARY_COLOR, primaryColorResource);
+        intentToBuildOn.putExtra(EXTRA_SHOULD_SHOW_TOOLBAR, shouldShowToolbar);
 
-        bundle.putString(EXTRA_TOOLBAR_TITLE, toolbarTitle);
-        bundle.putString(EXTRA_THEME, theme.name());
-        bundle.putInt(EXTRA_PRIMARY_COLOR, primaryColorResource);
-        bundle.putBoolean(EXTRA_SHOULD_SHOW_TOOLBAR, shouldShowToolbar);
-
-        return bundle;
+        return intentToBuildOn;
     }
 
     /**

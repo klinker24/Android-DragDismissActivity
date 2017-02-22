@@ -33,14 +33,14 @@ public class SampleActivity extends AppCompatActivity {
         findViewById(R.id.scrollable).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new DragDismissBundleBuilder()
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
+
+                new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setToolbarTitle("Normal Activity Sample")
-                        .build();
+                        .build(scrollable);
 
-                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
-                scrollable.putExtras(bundle);
                 startActivity(scrollable);
             }
         });
@@ -48,15 +48,15 @@ public class SampleActivity extends AppCompatActivity {
         findViewById(R.id.recycler).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new DragDismissBundleBuilder()
+                Intent recycler = new Intent(SampleActivity.this, DismissableActivityRecyclerView.class);
+
+                new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setShowToolbar(true)
                         .setToolbarTitle("RecyclerView Sample")
-                        .build();
+                        .build(recycler);
 
-                Intent recycler = new Intent(SampleActivity.this, DismissableActivityRecyclerView.class);
-                recycler.putExtras(bundle);
                 startActivity(recycler);
             }
         });
@@ -64,13 +64,13 @@ public class SampleActivity extends AppCompatActivity {
         findViewById(R.id.black).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new DragDismissBundleBuilder()
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
+
+                new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.BLACK)
                         .setToolbarTitle("Black Sample")
-                        .build();
+                        .build(scrollable);
 
-                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
-                scrollable.putExtras(bundle);
                 startActivity(scrollable);
             }
         });
@@ -78,13 +78,13 @@ public class SampleActivity extends AppCompatActivity {
         findViewById(R.id.dark).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new DragDismissBundleBuilder()
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
+
+                new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.DARK)
                         .setToolbarTitle("Dark Sample")
-                        .build();
+                        .build(scrollable);
 
-                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
-                scrollable.putExtras(bundle);
                 startActivity(scrollable);
             }
         });
@@ -92,14 +92,14 @@ public class SampleActivity extends AppCompatActivity {
         findViewById(R.id.dark_colored).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new DragDismissBundleBuilder()
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
+
+                new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.DARK)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setToolbarTitle("Dark and Colored Sample")
-                        .build();
+                        .build(scrollable);
 
-                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
-                scrollable.putExtras(bundle);
                 startActivity(scrollable);
             }
         });
@@ -107,15 +107,15 @@ public class SampleActivity extends AppCompatActivity {
         findViewById(R.id.hide_toolbar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new DragDismissBundleBuilder()
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
+
+                new DragDismissBundleBuilder()
                         .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setShowToolbar(false)
                         .setToolbarTitle("Hidden Toolbar Sample")
-                        .build();
+                        .build(scrollable);
 
-                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
-                scrollable.putExtras(bundle);
                 startActivity(scrollable);
             }
         });
