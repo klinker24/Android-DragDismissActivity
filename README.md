@@ -94,6 +94,8 @@ startActivity(dragDismissActivity);
 
 ## Contributing
 
+Originally based off of [klinker41](https://github.com/klinker41)'s work for [article-android](https://github.com/klinker41/article-android).
+
 Please fork this repository and contribute back using [pull requests](https://github.com/klinker24/Android-DragDismissActivity/pulls). Features can be requested using [issues](https://github.com/klinker24/Android-DragDismissActivity/issues). All code, comments, and critiques are greatly appreciated.
 
 ## Changelog
