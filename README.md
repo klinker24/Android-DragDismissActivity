@@ -10,6 +10,8 @@ This library provides an elastic layout that can dismiss an `Activity` with a `R
 
 ## Including It In Your Project
 
+![animation](artwork/animation.gif)
+
 This project was designed to be very easy to implement on top of your existing `Activities`.
 
 To include it in your project, add this to your module's `build.gradle` file:
