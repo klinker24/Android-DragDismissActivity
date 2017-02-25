@@ -23,9 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import xyz.klinker.android.drag_dismiss.DragDismissBundleBuilder;
 import xyz.klinker.android.drag_dismiss.R;
-import xyz.klinker.android.drag_dismiss.util.ColorUtils;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
 
 /**

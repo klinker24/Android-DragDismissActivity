@@ -18,12 +18,11 @@ package xyz.klinker.android.drag_dismiss;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 
 /**
  * Builder to help with creating a DragDismissActivity and DragDismissRecyclerViewActivity
  */
-public class DragDismissBundleBuilder {
+public class DragDismissIntentBuilder {
 
     public static final String EXTRA_THEME = "extra_base_theme";
     public static final String EXTRA_PRIMARY_COLOR = "extra_primary_color";
@@ -45,7 +44,7 @@ public class DragDismissBundleBuilder {
 
     private Context context;
 
-    public DragDismissBundleBuilder(Context context) {
+    public DragDismissIntentBuilder(Context context) {
         this.context = context;
     }
 
@@ -74,7 +73,7 @@ public class DragDismissBundleBuilder {
      * @param theme LIGHT, DARK, or DAY_NIGHT.
      * @return the builder.
      */
-    public DragDismissBundleBuilder setTheme(Theme theme) {
+    public DragDismissIntentBuilder setTheme(Theme theme) {
         this.theme = theme;
         return this;
     }
@@ -85,7 +84,7 @@ public class DragDismissBundleBuilder {
      * @param primaryColor the color resource for the toolbar and the status bar.
      * @return the builder.
      */
-    public DragDismissBundleBuilder setPrimaryColorResource(int primaryColor) {
+    public DragDismissIntentBuilder setPrimaryColorResource(int primaryColor) {
         this.primaryColor = context.getResources().getColor(primaryColor);
         return this;
     }
@@ -96,7 +95,7 @@ public class DragDismissBundleBuilder {
      * @param primaryColor the color resource for the toolbar and the status bar.
      * @return the builder.
      */
-    public DragDismissBundleBuilder setPrimaryColorValue(int primaryColor) {
+    public DragDismissIntentBuilder setPrimaryColorValue(int primaryColor) {
         this.primaryColor = primaryColor;
         return this;
     }
@@ -107,7 +106,7 @@ public class DragDismissBundleBuilder {
      * @param title the title of the Activity.
      * @return the builder.
      */
-    public DragDismissBundleBuilder setToolbarTitle(String title) {
+    public DragDismissIntentBuilder setToolbarTitle(String title) {
         this.toolbarTitle = title;
         return this;
     }
@@ -118,7 +117,7 @@ public class DragDismissBundleBuilder {
      * @param showToolbar
      * @return the builder.
      */
-    public DragDismissBundleBuilder setShowToolbar(boolean showToolbar) {
+    public DragDismissIntentBuilder setShowToolbar(boolean showToolbar) {
         this.shouldShowToolbar = showToolbar;
         return this;
     }
@@ -129,7 +128,7 @@ public class DragDismissBundleBuilder {
      * @param scrollToolbar
      * @return the builder.
      */
-    public DragDismissBundleBuilder setShouldScrollToolbar(boolean scrollToolbar) {
+    public DragDismissIntentBuilder setShouldScrollToolbar(boolean scrollToolbar) {
         this.shouldScrollToolbar = scrollToolbar;
         return this;
     }

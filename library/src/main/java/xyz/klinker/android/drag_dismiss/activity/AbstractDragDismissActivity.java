@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import xyz.klinker.android.drag_dismiss.DragDismissBundleBuilder;
+import xyz.klinker.android.drag_dismiss.DragDismissIntentBuilder;
 import xyz.klinker.android.drag_dismiss.R;
 import xyz.klinker.android.drag_dismiss.util.ColorUtils;
 import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
@@ -36,22 +36,22 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String theme = getIntent().getStringExtra(DragDismissBundleBuilder.EXTRA_THEME);
-        if (DragDismissBundleBuilder.Theme.LIGHT.name().equals(theme)) {
+        String theme = getIntent().getStringExtra(DragDismissIntentBuilder.EXTRA_THEME);
+        if (DragDismissIntentBuilder.Theme.LIGHT.name().equals(theme)) {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        } else if (DragDismissBundleBuilder.Theme.DARK.name().equals(theme)) {
+        } else if (DragDismissIntentBuilder.Theme.DARK.name().equals(theme)) {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else if (DragDismissBundleBuilder.Theme.BLACK.name().equals(theme)) {
+        } else if (DragDismissIntentBuilder.Theme.BLACK.name().equals(theme)) {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
         }
 
-        this.shouldScrollToolbar = getIntent().getBooleanExtra(DragDismissBundleBuilder.EXTRA_SHOULD_SCROLL_TOOLBAR, true);
-        this.shouldShowToolbar = getIntent().getBooleanExtra(DragDismissBundleBuilder.EXTRA_SHOULD_SHOW_TOOLBAR, true);
-        this.toolbarTitle = getIntent().getStringExtra(DragDismissBundleBuilder.EXTRA_TOOLBAR_TITLE);
-        this.primaryColor = getIntent().getIntExtra(DragDismissBundleBuilder.EXTRA_PRIMARY_COLOR,
-                        DragDismissBundleBuilder.DEFAULT_TOOLBAR_RESOURCE);
+        this.shouldScrollToolbar = getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_SHOULD_SCROLL_TOOLBAR, true);
+        this.shouldShowToolbar = getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_SHOULD_SHOW_TOOLBAR, true);
+        this.toolbarTitle = getIntent().getStringExtra(DragDismissIntentBuilder.EXTRA_TOOLBAR_TITLE);
+        this.primaryColor = getIntent().getIntExtra(DragDismissIntentBuilder.EXTRA_PRIMARY_COLOR,
+                        DragDismissIntentBuilder.DEFAULT_TOOLBAR_RESOURCE);
 
         setContentView(getLayout());
 
@@ -71,7 +71,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
             toolbar.setVisibility(View.GONE);
         }
 
-        if (DragDismissBundleBuilder.Theme.BLACK.name().equals(theme)) {
+        if (DragDismissIntentBuilder.Theme.BLACK.name().equals(theme)) {
             findViewById(R.id.dragdismiss_background_view).setBackgroundColor(Color.BLACK);
         }
 
