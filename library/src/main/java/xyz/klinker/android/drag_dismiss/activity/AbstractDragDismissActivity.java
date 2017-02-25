@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import xyz.klinker.android.drag_dismiss.DragDismissBundleBuilder;
 import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.util.ColorUtils;
 import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
 
 /**
@@ -21,6 +23,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
 
     protected abstract int getLayout();
 
+    protected ProgressBar progressBar;
     protected Toolbar toolbar;
     protected View statusBar;
 
@@ -52,6 +55,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
 
         setContentView(getLayout());
 
+        progressBar = (ProgressBar) findViewById(R.id.dragdismiss_loading);
         toolbar = (Toolbar) findViewById(R.id.dragdismiss_toolbar);
         statusBar = findViewById(R.id.dragdismiss_status_bar);
 
@@ -70,6 +74,8 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
         if (DragDismissBundleBuilder.Theme.BLACK.name().equals(theme)) {
             findViewById(R.id.dragdismiss_background_view).setBackgroundColor(Color.BLACK);
         }
+
+        ColorUtils.changeProgressBarColors(progressBar, primaryColor);
 
         View.OnClickListener sideClickListener = new View.OnClickListener() {
             @Override
@@ -99,5 +105,13 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
         } else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
     }
 }

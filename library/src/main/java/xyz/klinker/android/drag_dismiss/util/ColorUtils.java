@@ -1,6 +1,17 @@
 package xyz.klinker.android.drag_dismiss.util;
 
+import android.annotation.TargetApi;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v7.widget.RecyclerView;
+import android.widget.EdgeEffect;
+import android.widget.ProgressBar;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * Class used to help with the Material Design Color palette, which is created
@@ -78,5 +89,65 @@ public final class ColorUtils {
         return new float[] {
                 hue, 2f * sat / (light + sat), light + sat
         };
+    }
+
+    /**
+     * Changes the progress bar's color.
+     */
+    public static void changeProgressBarColors(ProgressBar progressBar, int color) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            Drawable wrapDrawable = DrawableCompat.wrap(progressBar.getIndeterminateDrawable());
+            DrawableCompat.setTint(wrapDrawable, color);
+            progressBar.setIndeterminateDrawable(DrawableCompat.unwrap(wrapDrawable));
+        } else {
+            progressBar.getIndeterminateDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        }
+    }
+
+    /**
+     * Changes the overscroll highlight effect on a recyclerview to be the given color.
+     */
+    public static void changeRecyclerOverscrollColors(RecyclerView recyclerView, final int color) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            return;
+        }
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            private boolean invoked = false;
+
+            @Override
+            @TargetApi(21)
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                // only invoke this once
+                if (invoked) {
+                    return;
+                } else {
+                    invoked = true;
+                }
+
+                try {
+                    final Class<?> clazz = RecyclerView.class;
+
+                    for (final String name : new String[]{"ensureTopGlow", "ensureBottomGlow"}) {
+                        Method method = clazz.getDeclaredMethod(name);
+                        method.setAccessible(true);
+                        method.invoke(recyclerView);
+                    }
+
+                    for (final String name : new String[]{"mTopGlow", "mBottomGlow"}) {
+                        final Field field = clazz.getDeclaredField(name);
+                        field.setAccessible(true);
+                        final Object edge = field.get(recyclerView);
+                        final Field fEdgeEffect = edge.getClass().getDeclaredField("mEdgeEffect");
+                        fEdgeEffect.setAccessible(true);
+                        ((EdgeEffect) fEdgeEffect.get(edge)).setColor(color);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

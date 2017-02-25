@@ -30,6 +30,13 @@
         android:text="@string/scrollable"/>
 
     <Button
+        android:id="@+id/scrollable_progress"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/scrollable_progress"/>
+
+    <Button
         android:id="@+id/recycler"
         android:gravity="center"
         android:layout_width="match_parent"

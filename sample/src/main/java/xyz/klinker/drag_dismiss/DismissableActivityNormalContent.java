@@ -19,18 +19,35 @@ package xyz.klinker.drag_dismiss;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import xyz.klinker.android.drag_dismiss.activity.DragDismissActivity;
 
 public class DismissableActivityNormalContent extends DragDismissActivity {
 
+    public static final String EXTRA_SHOW_PROGRESS = "extra_show_progress";
+
     @Override
     protected View onCreateContent(LayoutInflater inflater, ViewGroup parent) {
-        View v = inflater.inflate(R.layout.activity_scrollable, parent, false);
+        final View v = inflater.inflate(R.layout.activity_scrollable, parent, false);
+        final TextView tv = (TextView) v.findViewById(R.id.text_view);
 
         if (!shouldShowToolbar) {
             // don't need the padding that pushes it below the toolbar
-            v.findViewById(R.id.text_view).setPadding(0,0,0,0);
+            tv.setPadding(0,0,0,0);
+        }
+
+        if (getIntent().getBooleanExtra(EXTRA_SHOW_PROGRESS, false)) {
+            showProgressBar();
+            tv.setVisibility(View.GONE);
+
+            tv.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    tv.setVisibility(View.VISIBLE);
+                    hideProgressBar();
+                }
+            }, 1500);
         }
 
         return v;

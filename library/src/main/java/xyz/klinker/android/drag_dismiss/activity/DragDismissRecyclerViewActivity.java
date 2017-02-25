@@ -19,9 +19,8 @@ package xyz.klinker.android.drag_dismiss.activity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
-import xyz.klinker.android.drag_dismiss.DragDismissBundleBuilder;
 import xyz.klinker.android.drag_dismiss.R;
-import xyz.klinker.android.drag_dismiss.util.RecyclerViewUtils;
+import xyz.klinker.android.drag_dismiss.util.ColorUtils;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
 
 /**
@@ -48,7 +47,7 @@ public abstract class DragDismissRecyclerViewActivity extends AbstractDragDismis
             statusBar.setBackgroundColor(primaryColor);
         }
 
-        RecyclerViewUtils.changeRecyclerOverscrollColors(recyclerView, primaryColor);
+        ColorUtils.changeRecyclerOverscrollColors(recyclerView, primaryColor);
         setupRecyclerView(recyclerView);
     }
 

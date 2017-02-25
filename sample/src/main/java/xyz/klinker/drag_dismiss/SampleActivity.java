@@ -45,6 +45,23 @@ public class SampleActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.scrollable_progress).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
+
+                new DragDismissBundleBuilder(SampleActivity.this)
+                        .setTheme(DragDismissBundleBuilder.Theme.LIGHT)
+                        .setPrimaryColorResource(R.color.colorPrimary)
+                        .setToolbarTitle("Normal Activity Sample")
+                        .build(scrollable);
+
+                scrollable.putExtra(DismissableActivityNormalContent.EXTRA_SHOW_PROGRESS, true);
+
+                startActivity(scrollable);
+            }
+        });
+
         findViewById(R.id.recycler).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

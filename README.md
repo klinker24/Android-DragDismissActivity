@@ -92,6 +92,14 @@ new DragDismissBundleBuilder(context)
 startActivity(dragDismissActivity);
 ```
 
+### Adding a ProgressBar
+
+Have content that won't be loaded immediately? No problem.
+
+While content is loading, you can call `DragDismissActivity#showProgessBar` to automatically show the progress indicator. When the content is done loading, just call `DragDismissActivity#hideProgessBar` to remove it.
+
+For a simple example usage, check out the [DismissableActivityNormalContent](https://github.com/klinker24/Android-DragDismissActivity/blob/master/sample/src/main/java/xyz/klinker/drag_dismiss/DismissableActivityNormalContent.java) sample.
+
 ## Contributing
 
 Originally based off of [klinker41](https://github.com/klinker41)'s work for [article-android](https://github.com/klinker41/article-android).

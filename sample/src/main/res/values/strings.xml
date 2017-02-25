@@ -18,6 +18,7 @@
     <string name="app_name">Drag Dismiss Activity</string>
 
     <string name="scrollable">Normal Activity</string>
+    <string name="scrollable_progress">Normal Activity (w/ ProgressBar)</string>
     <string name="recycler">RecyclerView Activity</string>
     <string name="black_theme">Black Theme</string>
     <string name="dark_theme">Dark Theme</string>
