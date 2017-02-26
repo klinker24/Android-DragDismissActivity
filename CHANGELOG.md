@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.2.0
+
+* Add option to have tablet's use the full screen for the `DragDismissActivities`
+
 ### v1.1.2
 
 * Ensure that the `Toolbar` color is correct on the `Activities` with `NestedScrollView`

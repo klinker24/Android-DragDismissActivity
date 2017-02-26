@@ -29,6 +29,7 @@ public class DragDismissIntentBuilder {
     public static final String EXTRA_TOOLBAR_TITLE = "extra_toolbar_title";
     public static final String EXTRA_SHOULD_SHOW_TOOLBAR = "extra_show_toolbar";
     public static final String EXTRA_SHOULD_SCROLL_TOOLBAR = "extra_scroll_toolbar";
+    public static final String EXTRA_FULLSCREEN_FOR_TABLETS = "extra_fullscreen_tablets";
 
     public static final int DEFAULT_TOOLBAR_RESOURCE = R.color.dragdismiss_toolbarBackground;
 
@@ -41,6 +42,7 @@ public class DragDismissIntentBuilder {
     private String toolbarTitle = null;
     private boolean shouldShowToolbar = true;
     private boolean shouldScrollToolbar = true;
+    private boolean fullscreen = false;
 
     private Context context;
 
@@ -63,6 +65,7 @@ public class DragDismissIntentBuilder {
         intentToBuildOn.putExtra(EXTRA_PRIMARY_COLOR, primaryColor);
         intentToBuildOn.putExtra(EXTRA_SHOULD_SHOW_TOOLBAR, shouldShowToolbar);
         intentToBuildOn.putExtra(EXTRA_SHOULD_SCROLL_TOOLBAR, shouldScrollToolbar);
+        intentToBuildOn.putExtra(EXTRA_FULLSCREEN_FOR_TABLETS, fullscreen);
 
         return intentToBuildOn;
     }
@@ -130,6 +133,17 @@ public class DragDismissIntentBuilder {
      */
     public DragDismissIntentBuilder setShouldScrollToolbar(boolean scrollToolbar) {
         this.shouldScrollToolbar = scrollToolbar;
+        return this;
+    }
+
+    /**
+     * Set whether or not there should be padding on each side of the Activity, on tablets
+     *
+     * @param fullscreen
+     * @return the builder.
+     */
+    public DragDismissIntentBuilder setFullscreenOnTablets(boolean fullscreen) {
+        this.fullscreen = fullscreen;
         return this;
     }
 }

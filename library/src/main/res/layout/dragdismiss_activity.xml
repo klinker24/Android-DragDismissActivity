@@ -29,7 +29,7 @@
         android:id="@+id/dragdismiss_transparent_side_1"/>
 
     <xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout
-        android:layout_width="@dimen/dragdismiss_articleWidth"
+        android:layout_width="@dimen/dragdismiss_width"
         android:layout_height="match_parent"
         android:id="@+id/dragdismiss_drag_dismiss_layout">
 

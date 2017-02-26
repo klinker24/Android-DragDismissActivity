@@ -16,5 +16,5 @@
   -->
 
 <resources>
-    <dimen name="dragdismiss_articleWidth">576dp</dimen>
+    <dimen name="dragdismiss_width">576dp</dimen>
 </resources>

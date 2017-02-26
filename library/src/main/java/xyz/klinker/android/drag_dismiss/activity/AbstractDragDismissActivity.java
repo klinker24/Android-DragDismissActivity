@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import xyz.klinker.android.drag_dismiss.DragDismissIntentBuilder;
@@ -31,6 +32,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
     protected String toolbarTitle;
     protected boolean shouldShowToolbar;
     protected boolean shouldScrollToolbar;
+    protected boolean fullscreenForTablets;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
         }
 
+        this.fullscreenForTablets = getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_FULLSCREEN_FOR_TABLETS, false);
         this.shouldScrollToolbar = getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_SHOULD_SCROLL_TOOLBAR, true);
         this.shouldShowToolbar = getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_SHOULD_SHOW_TOOLBAR, true);
         this.toolbarTitle = getIntent().getStringExtra(DragDismissIntentBuilder.EXTRA_TOOLBAR_TITLE);
@@ -77,14 +80,24 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
 
         ColorUtils.changeProgressBarColors(progressBar, primaryColor);
 
-        View.OnClickListener sideClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        };
-        findViewById(R.id.dragdismiss_transparent_side_1).setOnClickListener(sideClickListener);
-        findViewById(R.id.dragdismiss_transparent_side_2).setOnClickListener(sideClickListener);
+        if (fullscreenForTablets) {
+            findViewById(R.id.dragdismiss_transparent_side_1).setVisibility(View.GONE);
+            findViewById(R.id.dragdismiss_transparent_side_2).setVisibility(View.GONE);
+
+            View dragDismiss = findViewById(R.id.dragdismiss_drag_dismiss_layout);
+            dragDismiss.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+            dragDismiss.invalidate();
+        } else {
+            View.OnClickListener sideClickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            };
+
+            findViewById(R.id.dragdismiss_transparent_side_1).setOnClickListener(sideClickListener);
+            findViewById(R.id.dragdismiss_transparent_side_2).setOnClickListener(sideClickListener);
+        }
 
         ElasticDragDismissFrameLayout dragDismissLayout = (ElasticDragDismissFrameLayout)
                 findViewById(R.id.dragdismiss_drag_dismiss_layout);

@@ -130,6 +130,7 @@ public class SampleActivity extends AppCompatActivity {
                         .setTheme(DragDismissIntentBuilder.Theme.LIGHT)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setShowToolbar(false)
+                        .setFullscreenOnTablets(true)
                         .setToolbarTitle("Hidden Toolbar Sample")
                         .build(scrollable);
 
