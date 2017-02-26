@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.1.2
+
+* Ensure that the `Toolbar` color is correct on the `Activities` with `NestedScrollView`
+
 ### v1.1.1
 
 * Change `DragDismissBundleBuilder` to `DragDismissIntentBuilder`

@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
 
 /**
@@ -39,9 +40,22 @@ public abstract class DragDismissActivity extends AbstractDragDismissActivity {
     public final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         if (shouldScrollToolbar && shouldShowToolbar) {
-            NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.dragdismiss_scroll_view);
-            scrollView.setOnScrollChangeListener(new ToolbarScrollListener(toolbar, statusBar, primaryColor));
+            final ToolbarScrollListener scrollListener = new ToolbarScrollListener(toolbar, statusBar, primaryColor);
+            final NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.dragdismiss_scroll_view);
+            scrollView.setOnScrollChangeListener(scrollListener);
+
+            ElasticDragDismissFrameLayout dragDismissLayout = (ElasticDragDismissFrameLayout)
+                    findViewById(R.id.dragdismiss_drag_dismiss_layout);
+            dragDismissLayout.addListener(new ElasticDragDismissFrameLayout.ElasticDragDismissCallback() {
+                @Override
+                public void onDrag(float elasticOffset, float elasticOffsetPixels, float rawOffset, float rawOffsetPixels) {
+                    if (elasticOffsetPixels > 10) {
+                        scrollListener.onScrollChange(scrollView, 0, 0, 0, 1000);
+                    }
+                }
+            });
         } else {
             toolbar.setBackgroundColor(primaryColor);
             statusBar.setBackgroundColor(primaryColor);
