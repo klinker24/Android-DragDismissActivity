@@ -35,7 +35,7 @@ public abstract class DragDismissRecyclerViewActivity extends AbstractDragDismis
     protected abstract void setupRecyclerView(RecyclerView recyclerView);
 
     @Override
-    public final void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.dragdismiss_recycler);

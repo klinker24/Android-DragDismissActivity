@@ -34,10 +34,10 @@ import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
  */
 public abstract class DragDismissActivity extends AbstractDragDismissActivity {
 
-    protected abstract View onCreateContent(LayoutInflater inflater, ViewGroup parent);
+    protected abstract View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState);
 
     @Override
-    public final void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
@@ -62,7 +62,7 @@ public abstract class DragDismissActivity extends AbstractDragDismissActivity {
         }
 
         FrameLayout elasticContent = (FrameLayout) findViewById(R.id.dragdismiss_content);
-        elasticContent.addView(onCreateContent(getLayoutInflater(), elasticContent));
+        elasticContent.addView(onCreateContent(getLayoutInflater(), elasticContent, savedInstanceState));
     }
 
     @Override

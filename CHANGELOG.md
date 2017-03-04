@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.2.1
+
+* Don't have `Activity#onCreate` as `final`
+* Add `savedInstanceState` to the `Activity` initializers
+
 ### v1.2.0
 
 * Add option to have tablet's use the full screen for the `DragDismissActivities`

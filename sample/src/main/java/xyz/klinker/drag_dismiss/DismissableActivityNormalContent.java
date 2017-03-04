@@ -16,6 +16,7 @@
 
 package xyz.klinker.drag_dismiss;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class DismissableActivityNormalContent extends DragDismissActivity {
     public static final String EXTRA_SHOW_PROGRESS = "extra_show_progress";
 
     @Override
-    protected View onCreateContent(LayoutInflater inflater, ViewGroup parent) {
+    protected View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.activity_scrollable, parent, false);
         final TextView tv = (TextView) v.findViewById(R.id.text_view);
 
