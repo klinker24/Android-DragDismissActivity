@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.2.2
+
+* Improve scrolling on the `DragDismissActivity` by removing the `AppBarLayout` and handing its functionality myself
+
 ### v1.2.1
 
 * Don't have `Activity#onCreate` as `final`

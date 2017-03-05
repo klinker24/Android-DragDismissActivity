@@ -63,29 +63,22 @@
                 android:visibility="gone"
                 android:indeterminate="true"/>
 
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/dragdismiss_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="24dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:background="@color/dragdismiss_toolbarBackground"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:id="@+id/dragdismiss_status_bar"
                 android:background="@color/dragdismiss_toolbarBackground"/>
 
-            <android.support.design.widget.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="24dp"
-                app:elevation="0dp">
-
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/dragdismiss_toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@color/dragdismiss_toolbarBackground"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:layout_scrollFlags="" />
-
-            </android.support.design.widget.AppBarLayout>
         </android.support.design.widget.CoordinatorLayout>
     </xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout>
 
