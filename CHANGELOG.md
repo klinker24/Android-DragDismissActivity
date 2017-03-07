@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.2.3
+
+* Improve the swipe to dismiss distance
+
 ### v1.2.2
 
 * Improve scrolling on the `DragDismissActivity` by removing the `AppBarLayout` and handing its functionality myself
