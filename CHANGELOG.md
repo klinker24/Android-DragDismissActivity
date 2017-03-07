@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.3.0
+
+* Option to set the drag elasticity on the `DragDismissIntentBuilder".
+`
 ### v1.2.3
 
 * Improve the swipe to dismiss distance

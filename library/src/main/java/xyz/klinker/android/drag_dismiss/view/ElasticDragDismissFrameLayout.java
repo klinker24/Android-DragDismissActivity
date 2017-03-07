@@ -47,12 +47,17 @@ import xyz.klinker.android.drag_dismiss.R;
  */
 public class ElasticDragDismissFrameLayout extends FrameLayout {
 
+    public static final float DRAG_ELASTICITY_NORMAL = .5f;
+    public static final float DRAG_ELASTICITY_LARGE = .9f;
+    public static final float DRAG_ELASTICITY_XLARGE = 1.25f;
+    public static final float DRAG_ELASTICITY_XXLARGE = 1.75f;
+
     // configurable attribs
     private float dragDismissDistance = Float.MAX_VALUE;
     private float dragDismissFraction = -1f;
     private float dragDismissScale = 1f;
     private boolean shouldScale = false;
-    private float dragElasticity = .8f;
+    private float dragElasticity = DRAG_ELASTICITY_NORMAL;
 
     // state
     private float totalDrag;
@@ -333,6 +338,14 @@ public class ElasticDragDismissFrameLayout extends FrameLayout {
         if (draggingBackground != null) {
             canvas.drawRect(draggingBackground, draggingBackgroundPaint);
         }
+    }
+
+    public void setDragElasticity(float elasticity) {
+        this.dragElasticity = elasticity;
+    }
+
+    public void halfDistanceRequired() {
+        this.dragDismissDistance = dragDismissDistance / 2;
     }
 
 }

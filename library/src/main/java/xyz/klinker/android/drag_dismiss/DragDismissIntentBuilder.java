@@ -25,6 +25,7 @@ import android.content.Intent;
 public class DragDismissIntentBuilder {
 
     public static final String EXTRA_THEME = "extra_base_theme";
+    public static final String EXTRA_DRAG_ELASTICITY = "extra_drag_elasticity";
     public static final String EXTRA_PRIMARY_COLOR = "extra_primary_color";
     public static final String EXTRA_TOOLBAR_TITLE = "extra_toolbar_title";
     public static final String EXTRA_SHOULD_SHOW_TOOLBAR = "extra_show_toolbar";
@@ -37,7 +38,12 @@ public class DragDismissIntentBuilder {
         LIGHT, DARK, BLACK, DAY_NIGHT
     }
 
+    public enum DragElasticity {
+        NORMAL, LARGE, XLARGE, XXLARGE
+    }
+
     private Theme theme = Theme.LIGHT;
+    private DragElasticity dragElasticity = DragElasticity.NORMAL;
     private int primaryColor = -1;
     private String toolbarTitle = null;
     private boolean shouldShowToolbar = true;
@@ -62,6 +68,7 @@ public class DragDismissIntentBuilder {
 
         intentToBuildOn.putExtra(EXTRA_TOOLBAR_TITLE, toolbarTitle);
         intentToBuildOn.putExtra(EXTRA_THEME, theme.name());
+        intentToBuildOn.putExtra(EXTRA_DRAG_ELASTICITY, dragElasticity.name());
         intentToBuildOn.putExtra(EXTRA_PRIMARY_COLOR, primaryColor);
         intentToBuildOn.putExtra(EXTRA_SHOULD_SHOW_TOOLBAR, shouldShowToolbar);
         intentToBuildOn.putExtra(EXTRA_SHOULD_SCROLL_TOOLBAR, shouldScrollToolbar);
@@ -78,6 +85,17 @@ public class DragDismissIntentBuilder {
      */
     public DragDismissIntentBuilder setTheme(Theme theme) {
         this.theme = theme;
+        return this;
+    }
+
+    /**
+     * Set how difficult you want it to be to drag-to-dismiss.
+     *
+     * @param elasticity NORMAL is the default. The higher elasticity, the easier it is to dismiss.
+     * @return the builder.
+     */
+    public DragDismissIntentBuilder setDragElasticity(DragElasticity elasticity) {
+        this.dragElasticity = elasticity;
         return this;
     }
 

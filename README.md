@@ -19,7 +19,7 @@ To include it in your project, add this to your module's `build.gradle` file:
 ```groovy
 dependencies {
 	...
-	compile 'com.klinkerapps:drag-dismiss-activity:1.2.3'
+	compile 'com.klinkerapps:drag-dismiss-activity:1.3.0'
 }
 ```
 
@@ -85,6 +85,7 @@ new DragDismissBundleBuilder(context)
     .setShowToolbar(true)				// defaults to true
     .setShouldScrollToolbar(true)       // defaults to true
     .setFullscreenOnTablets(false)      // defaults to false, tablets will have padding on each side
+    .setDragElasticity(DragDismissIntentBuilder.DragElasticity.NORMAL)  // Larger elasticities will make it easier to dismiss.
     .build(dragDismissActivity);
 
 // do anything else that you want to set up the Intent

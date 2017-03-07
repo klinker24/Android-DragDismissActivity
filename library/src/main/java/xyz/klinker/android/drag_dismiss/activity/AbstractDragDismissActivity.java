@@ -38,6 +38,7 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        String dragElasticity = getIntent().getStringExtra(DragDismissIntentBuilder.EXTRA_DRAG_ELASTICITY);
         String theme = getIntent().getStringExtra(DragDismissIntentBuilder.EXTRA_THEME);
         if (DragDismissIntentBuilder.Theme.LIGHT.name().equals(theme)) {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -80,13 +81,15 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
 
         ColorUtils.changeProgressBarColors(progressBar, primaryColor);
 
+        ElasticDragDismissFrameLayout dragDismissLayout = (ElasticDragDismissFrameLayout)
+                findViewById(R.id.dragdismiss_drag_dismiss_layout);
+
         if (fullscreenForTablets) {
             findViewById(R.id.dragdismiss_transparent_side_1).setVisibility(View.GONE);
             findViewById(R.id.dragdismiss_transparent_side_2).setVisibility(View.GONE);
-
-            View dragDismiss = findViewById(R.id.dragdismiss_drag_dismiss_layout);
-            dragDismiss.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
-            dragDismiss.invalidate();
+;
+            dragDismissLayout.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+            dragDismissLayout.invalidate();
         } else {
             View.OnClickListener sideClickListener = new View.OnClickListener() {
                 @Override
@@ -99,8 +102,6 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
             findViewById(R.id.dragdismiss_transparent_side_2).setOnClickListener(sideClickListener);
         }
 
-        ElasticDragDismissFrameLayout dragDismissLayout = (ElasticDragDismissFrameLayout)
-                findViewById(R.id.dragdismiss_drag_dismiss_layout);
         dragDismissLayout.addListener(new ElasticDragDismissFrameLayout.ElasticDragDismissCallback() {
             @Override
             public void onDragDismissed() {
@@ -108,6 +109,18 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        if (DragDismissIntentBuilder.DragElasticity.XXLARGE.name().equals(dragElasticity)) {
+            dragDismissLayout.setDragElasticity(ElasticDragDismissFrameLayout.DRAG_ELASTICITY_XXLARGE);
+            dragDismissLayout.halfDistanceRequired();
+        } else if (DragDismissIntentBuilder.DragElasticity.XLARGE.name().equals(dragElasticity)) {
+            dragDismissLayout.setDragElasticity(ElasticDragDismissFrameLayout.DRAG_ELASTICITY_XLARGE);
+            dragDismissLayout.halfDistanceRequired();
+        } else if (DragDismissIntentBuilder.DragElasticity.LARGE.name().equals(dragElasticity)) {
+            dragDismissLayout.setDragElasticity(ElasticDragDismissFrameLayout.DRAG_ELASTICITY_LARGE);
+        } else {
+            dragDismissLayout.setDragElasticity(ElasticDragDismissFrameLayout.DRAG_ELASTICITY_NORMAL);
+        }
     }
 
     @Override

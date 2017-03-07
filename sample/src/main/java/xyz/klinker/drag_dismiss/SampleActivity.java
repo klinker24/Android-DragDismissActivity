@@ -100,6 +100,7 @@ public class SampleActivity extends AppCompatActivity {
                 new DragDismissIntentBuilder(SampleActivity.this)
                         .setTheme(DragDismissIntentBuilder.Theme.DARK)
                         .setToolbarTitle("Dark Sample")
+                        .setDragElasticity(DragDismissIntentBuilder.DragElasticity.LARGE)
                         .build(scrollable);
 
                 startActivity(scrollable);
@@ -115,6 +116,7 @@ public class SampleActivity extends AppCompatActivity {
                         .setTheme(DragDismissIntentBuilder.Theme.DARK)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setToolbarTitle("Dark and Colored Sample")
+                        .setDragElasticity(DragDismissIntentBuilder.DragElasticity.XLARGE)
                         .build(scrollable);
 
                 startActivity(scrollable);
@@ -132,6 +134,7 @@ public class SampleActivity extends AppCompatActivity {
                         .setShowToolbar(false)
                         .setFullscreenOnTablets(true)
                         .setToolbarTitle("Hidden Toolbar Sample")
+                        .setDragElasticity(DragDismissIntentBuilder.DragElasticity.XXLARGE)
                         .build(scrollable);
 
                 startActivity(scrollable);
