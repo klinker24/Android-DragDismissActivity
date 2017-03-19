@@ -16,27 +16,16 @@
 
 package xyz.klinker.android.drag_dismiss.activity;
 
-import android.os.Bundle;
-import android.support.v4.widget.NestedScrollView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-
-import xyz.klinker.android.drag_dismiss.R;
 import xyz.klinker.android.drag_dismiss.delegate.AbstractDragDismissDelegate;
 import xyz.klinker.android.drag_dismiss.delegate.DragDismissDelegate;
-import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
-import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
 
 /**
  * An Activity that provides a Toolbar and drag-dismiss functionality for free. This Activity allows
  * you to add any content you want. Your content will be housed in a NestedScrollView, so you shouldn't
  * worry about the height of the content.
  */
-public abstract class DragDismissActivity extends AbstractDragDismissActivity implements DragDismissDelegate.Callback {
-
-    public abstract View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState);
+public abstract class DragDismissActivity extends AbstractDragDismissActivity
+        implements DragDismissDelegate.Callback {
 
     @Override
     protected AbstractDragDismissDelegate createDelegate() {

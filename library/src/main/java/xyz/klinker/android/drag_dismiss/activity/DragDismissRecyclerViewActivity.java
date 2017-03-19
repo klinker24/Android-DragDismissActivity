@@ -16,18 +16,10 @@
 
 package xyz.klinker.android.drag_dismiss.activity;
 
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import xyz.klinker.android.drag_dismiss.R;
 import xyz.klinker.android.drag_dismiss.delegate.AbstractDragDismissDelegate;
-import xyz.klinker.android.drag_dismiss.delegate.DragDismissDelegate;
 import xyz.klinker.android.drag_dismiss.delegate.DragDismissRecyclerViewDelegate;
-import xyz.klinker.android.drag_dismiss.util.ColorUtils;
-import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
 
 /**
  * Activity that allows you to drag and dismiss a RecyclerView, whenever you reach the top or
@@ -36,9 +28,8 @@ import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
  * You will have to set up the RecyclerView in the abstract setupRecyclerView method. Within that
  * method, you should set the adapter and the LayoutManager.
  */
-public abstract class DragDismissRecyclerViewActivity extends AbstractDragDismissActivity implements DragDismissRecyclerViewDelegate.Callback {
-
-    public abstract void setupRecyclerView(RecyclerView recyclerView);
+public abstract class DragDismissRecyclerViewActivity extends AbstractDragDismissActivity
+        implements DragDismissRecyclerViewDelegate.Callback {
 
     @Override
     protected AbstractDragDismissDelegate createDelegate() {

@@ -24,7 +24,7 @@ import xyz.klinker.drag_dismiss.adapter.SampleAdapter;
 
 public class DismissableActivityRecyclerView extends DragDismissRecyclerViewActivity {
     @Override
-    protected void setupRecyclerView(RecyclerView recyclerView) {
+    public void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new SampleAdapter());
     }

@@ -16,21 +16,12 @@
 
 package xyz.klinker.android.drag_dismiss.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import xyz.klinker.android.drag_dismiss.DragDismissIntentBuilder;
-import xyz.klinker.android.drag_dismiss.R;
 import xyz.klinker.android.drag_dismiss.delegate.AbstractDragDismissDelegate;
-import xyz.klinker.android.drag_dismiss.util.ColorUtils;
-import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
 
 /**
  * This is the common logic for the DragDismissableActivity and DragDismissableRecyclerViewActivity.
