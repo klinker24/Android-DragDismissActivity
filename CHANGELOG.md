@@ -1,9 +1,15 @@
 # Changelog
 
+### v1.4.0
+
+* Create a `DragDismissDelegate` and `DragDismissRecyclerViewDelegate` to handle the drag-dismiss functionality, for those that don't want to extend the `DragDismissActivity` and `DragDismissRecyclerViewActivity`.
+* The provided `Activities` just implement the delegate. Similar to `AppCompatActivity`.
+* No changes are required when implementing either of the two provided `Activities`.
+
 ### v1.3.0
 
-* Option to set the drag elasticity on the `DragDismissIntentBuilder".
-`
+* Option to set the drag elasticity on the `DragDismissIntentBuilder`.
+
 ### v1.2.3
 
 * Improve the swipe to dismiss distance

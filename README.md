@@ -19,9 +19,11 @@ To include it in your project, add this to your module's `build.gradle` file:
 ```groovy
 dependencies {
 	...
-	compile 'com.klinkerapps:drag-dismiss-activity:1.3.0'
+	compile 'com.klinkerapps:drag-dismiss-activity:1.4.0'
 }
 ```
+
+*Note: The normal way to implement the drag-dismiss functionality is by extending the two provided `Activities`: `DragDismissActivity` and `DragDismissRecyclerViewActivity`. If you would rather not do that, I have provided a delegate for each of these use-cases, that you can use: `DragDismissDelegate` and `DragDismissRecyclerViewDelegate`. To see an example of the delegate's usage, check out the [AbstractDragDismissActivity](https://github.com/klinker24/Android-DragDismissActivity/blob/master/library/src/main/java/xyz/klinker/android/drag_dismiss/activity/AbstractDragDismissActivity.java).*
 
 #### Replacing an Activity
 

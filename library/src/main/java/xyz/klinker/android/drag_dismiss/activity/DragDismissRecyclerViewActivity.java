@@ -36,18 +36,13 @@ import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
  * You will have to set up the RecyclerView in the abstract setupRecyclerView method. Within that
  * method, you should set the adapter and the LayoutManager.
  */
-public abstract class DragDismissRecyclerViewActivity extends AbstractDragDismissActivity {
+public abstract class DragDismissRecyclerViewActivity extends AbstractDragDismissActivity implements DragDismissRecyclerViewDelegate.Callback {
 
-    protected abstract void setupRecyclerView(RecyclerView recyclerView);
+    public abstract void setupRecyclerView(RecyclerView recyclerView);
 
     @Override
     protected AbstractDragDismissDelegate createDelegate() {
-        return new DragDismissRecyclerViewDelegate(this, new DragDismissRecyclerViewDelegate.Callback() {
-            @Override
-            public void setupRecyclerView(RecyclerView recyclerView) {
-                DragDismissRecyclerViewActivity.this.setupRecyclerView(recyclerView);
-            }
-        });
+        return new DragDismissRecyclerViewDelegate(this, this);
     }
 
     /**

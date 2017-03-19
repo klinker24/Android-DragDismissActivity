@@ -34,18 +34,13 @@ import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
  * you to add any content you want. Your content will be housed in a NestedScrollView, so you shouldn't
  * worry about the height of the content.
  */
-public abstract class DragDismissActivity extends AbstractDragDismissActivity {
+public abstract class DragDismissActivity extends AbstractDragDismissActivity implements DragDismissDelegate.Callback {
 
-    protected abstract View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState);
+    public abstract View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState);
 
     @Override
     protected AbstractDragDismissDelegate createDelegate() {
-        return new DragDismissDelegate(this, new DragDismissDelegate.Callback() {
-            @Override
-            public View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-                return DragDismissActivity.this.onCreateContent(inflater, parent, savedInstanceState);
-            }
-        });
+        return new DragDismissDelegate(this, this);
     }
 
     /**
