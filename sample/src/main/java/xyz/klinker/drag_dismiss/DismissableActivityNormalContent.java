@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import xyz.klinker.android.drag_dismiss.DragDismissIntentBuilder;
 import xyz.klinker.android.drag_dismiss.activity.DragDismissActivity;
 
 public class DismissableActivityNormalContent extends DragDismissActivity {
@@ -33,7 +34,7 @@ public class DismissableActivityNormalContent extends DragDismissActivity {
         final View v = inflater.inflate(R.layout.activity_scrollable, parent, false);
         final TextView tv = (TextView) v.findViewById(R.id.text_view);
 
-        if (!shouldShowToolbar) {
+        if (!getDragDismissDelegate().shouldShowToolbar()) {
             // don't need the padding that pushes it below the toolbar
             tv.setPadding(0,0,0,0);
         }

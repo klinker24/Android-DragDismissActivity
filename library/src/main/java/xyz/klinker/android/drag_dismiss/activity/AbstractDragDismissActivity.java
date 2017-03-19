@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2017 Luke Klinker
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package xyz.klinker.android.drag_dismiss.activity;
 
 import android.graphics.Color;
@@ -12,6 +28,7 @@ import android.widget.ProgressBar;
 
 import xyz.klinker.android.drag_dismiss.DragDismissIntentBuilder;
 import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.delegate.AbstractDragDismissDelegate;
 import xyz.klinker.android.drag_dismiss.util.ColorUtils;
 import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
 
@@ -22,105 +39,15 @@ import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
  */
 public abstract class AbstractDragDismissActivity extends AppCompatActivity {
 
-    protected abstract int getLayout();
+    protected abstract AbstractDragDismissDelegate createDelegate();
 
-    protected ProgressBar progressBar;
-    protected Toolbar toolbar;
-    protected View statusBar;
-
-    protected int primaryColor;
-    protected String toolbarTitle;
-    protected boolean shouldShowToolbar;
-    protected boolean shouldScrollToolbar;
-    protected boolean fullscreenForTablets;
+    protected AbstractDragDismissDelegate delegate;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        String dragElasticity = getIntent().getStringExtra(DragDismissIntentBuilder.EXTRA_DRAG_ELASTICITY);
-        String theme = getIntent().getStringExtra(DragDismissIntentBuilder.EXTRA_THEME);
-        if (DragDismissIntentBuilder.Theme.LIGHT.name().equals(theme)) {
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        } else if (DragDismissIntentBuilder.Theme.DARK.name().equals(theme)) {
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else if (DragDismissIntentBuilder.Theme.BLACK.name().equals(theme)) {
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
-        }
-
-        this.fullscreenForTablets = getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_FULLSCREEN_FOR_TABLETS, false);
-        this.shouldScrollToolbar = getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_SHOULD_SCROLL_TOOLBAR, true);
-        this.shouldShowToolbar = getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_SHOULD_SHOW_TOOLBAR, true);
-        this.toolbarTitle = getIntent().getStringExtra(DragDismissIntentBuilder.EXTRA_TOOLBAR_TITLE);
-        this.primaryColor = getIntent().getIntExtra(DragDismissIntentBuilder.EXTRA_PRIMARY_COLOR,
-                        DragDismissIntentBuilder.DEFAULT_TOOLBAR_RESOURCE);
-
-        setContentView(getLayout());
-
-        progressBar = (ProgressBar) findViewById(R.id.dragdismiss_loading);
-        toolbar = (Toolbar) findViewById(R.id.dragdismiss_toolbar);
-        statusBar = findViewById(R.id.dragdismiss_status_bar);
-
-        setSupportActionBar(toolbar);
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.dragdismiss_ic_close);
-            getSupportActionBar().setTitle(toolbarTitle);
-        }
-
-        if (!shouldShowToolbar) {
-            toolbar.setVisibility(View.GONE);
-        }
-
-        if (DragDismissIntentBuilder.Theme.BLACK.name().equals(theme)) {
-            findViewById(R.id.dragdismiss_background_view).setBackgroundColor(Color.BLACK);
-        }
-
-        ColorUtils.changeProgressBarColors(progressBar, primaryColor);
-
-        ElasticDragDismissFrameLayout dragDismissLayout = (ElasticDragDismissFrameLayout)
-                findViewById(R.id.dragdismiss_drag_dismiss_layout);
-
-        if (fullscreenForTablets) {
-            findViewById(R.id.dragdismiss_transparent_side_1).setVisibility(View.GONE);
-            findViewById(R.id.dragdismiss_transparent_side_2).setVisibility(View.GONE);
-;
-            dragDismissLayout.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
-            dragDismissLayout.invalidate();
-        } else {
-            View.OnClickListener sideClickListener = new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    finish();
-                }
-            };
-
-            findViewById(R.id.dragdismiss_transparent_side_1).setOnClickListener(sideClickListener);
-            findViewById(R.id.dragdismiss_transparent_side_2).setOnClickListener(sideClickListener);
-        }
-
-        dragDismissLayout.addListener(new ElasticDragDismissFrameLayout.ElasticDragDismissCallback() {
-            @Override
-            public void onDragDismissed() {
-                super.onDragDismissed();
-                finish();
-            }
-        });
-
-        if (DragDismissIntentBuilder.DragElasticity.XXLARGE.name().equals(dragElasticity)) {
-            dragDismissLayout.setDragElasticity(ElasticDragDismissFrameLayout.DRAG_ELASTICITY_XXLARGE);
-            dragDismissLayout.halfDistanceRequired();
-        } else if (DragDismissIntentBuilder.DragElasticity.XLARGE.name().equals(dragElasticity)) {
-            dragDismissLayout.setDragElasticity(ElasticDragDismissFrameLayout.DRAG_ELASTICITY_XLARGE);
-            dragDismissLayout.halfDistanceRequired();
-        } else if (DragDismissIntentBuilder.DragElasticity.LARGE.name().equals(dragElasticity)) {
-            dragDismissLayout.setDragElasticity(ElasticDragDismissFrameLayout.DRAG_ELASTICITY_LARGE);
-        } else {
-            dragDismissLayout.setDragElasticity(ElasticDragDismissFrameLayout.DRAG_ELASTICITY_NORMAL);
-        }
+        this.delegate = createDelegate();
+        delegate.onCreate(savedInstanceState);
     }
 
     @Override
@@ -133,11 +60,17 @@ public abstract class AbstractDragDismissActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Display the {@link ProgressBar}.
+     */
     public void showProgressBar() {
-        progressBar.setVisibility(View.VISIBLE);
+        delegate.showProgressBar();
     }
 
+    /**
+     * Hide the {@link ProgressBar}.
+     */
     public void hideProgressBar() {
-        progressBar.setVisibility(View.GONE);
+        delegate.hideProgressBar();
     }
 }

@@ -18,8 +18,14 @@ package xyz.klinker.android.drag_dismiss.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.delegate.AbstractDragDismissDelegate;
+import xyz.klinker.android.drag_dismiss.delegate.DragDismissDelegate;
+import xyz.klinker.android.drag_dismiss.delegate.DragDismissRecyclerViewDelegate;
 import xyz.klinker.android.drag_dismiss.util.ColorUtils;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
 
@@ -35,24 +41,21 @@ public abstract class DragDismissRecyclerViewActivity extends AbstractDragDismis
     protected abstract void setupRecyclerView(RecyclerView recyclerView);
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.dragdismiss_recycler);
-
-        if (shouldScrollToolbar && shouldShowToolbar) {
-            recyclerView.addOnScrollListener(new ToolbarScrollListener(toolbar, statusBar, primaryColor));
-        } else {
-            toolbar.setBackgroundColor(primaryColor);
-            statusBar.setBackgroundColor(primaryColor);
-        }
-
-        ColorUtils.changeRecyclerOverscrollColors(recyclerView, primaryColor);
-        setupRecyclerView(recyclerView);
+    protected AbstractDragDismissDelegate createDelegate() {
+        return new DragDismissRecyclerViewDelegate(this, new DragDismissRecyclerViewDelegate.Callback() {
+            @Override
+            public void setupRecyclerView(RecyclerView recyclerView) {
+                DragDismissRecyclerViewActivity.this.setupRecyclerView(recyclerView);
+            }
+        });
     }
 
-    @Override
-    protected final int getLayout() {
-        return R.layout.dragdismiss_activity_recycler;
+    /**
+     * Get the delegate instanced that is used to set up the {@link android.app.Activity}.
+     *
+     * @return the delegate instance.
+     */
+    public DragDismissRecyclerViewDelegate getDragDismissDelegate() {
+        return (DragDismissRecyclerViewDelegate) delegate;
     }
 }

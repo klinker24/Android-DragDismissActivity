@@ -24,6 +24,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.delegate.AbstractDragDismissDelegate;
+import xyz.klinker.android.drag_dismiss.delegate.DragDismissDelegate;
 import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
 
@@ -37,36 +39,21 @@ public abstract class DragDismissActivity extends AbstractDragDismissActivity {
     protected abstract View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState);
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-        if (shouldScrollToolbar && shouldShowToolbar) {
-            final ToolbarScrollListener scrollListener = new ToolbarScrollListener(toolbar, statusBar, primaryColor);
-            final NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.dragdismiss_scroll_view);
-            scrollView.setOnScrollChangeListener(scrollListener);
-
-            ElasticDragDismissFrameLayout dragDismissLayout = (ElasticDragDismissFrameLayout)
-                    findViewById(R.id.dragdismiss_drag_dismiss_layout);
-            dragDismissLayout.addListener(new ElasticDragDismissFrameLayout.ElasticDragDismissCallback() {
-                @Override
-                public void onDrag(float elasticOffset, float elasticOffsetPixels, float rawOffset, float rawOffsetPixels) {
-                    if (elasticOffsetPixels > 10) {
-                        scrollListener.onScrollChange(scrollView, 0, 0, 0, 1000);
-                    }
-                }
-            });
-        } else {
-            toolbar.setBackgroundColor(primaryColor);
-            statusBar.setBackgroundColor(primaryColor);
-        }
-
-        FrameLayout elasticContent = (FrameLayout) findViewById(R.id.dragdismiss_content);
-        elasticContent.addView(onCreateContent(getLayoutInflater(), elasticContent, savedInstanceState));
+    protected AbstractDragDismissDelegate createDelegate() {
+        return new DragDismissDelegate(this, new DragDismissDelegate.Callback() {
+            @Override
+            public View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+                return DragDismissActivity.this.onCreateContent(inflater, parent, savedInstanceState);
+            }
+        });
     }
 
-    @Override
-    protected final int getLayout() {
-        return R.layout.dragdismiss_activity;
+    /**
+     * Get the delegate instanced that is used to set up the {@link android.app.Activity}.
+     *
+     * @return the delegate instance.
+     */
+    public DragDismissDelegate getDragDismissDelegate() {
+        return (DragDismissDelegate) delegate;
     }
 }
