@@ -25,7 +25,7 @@ dependencies {
 
 *Note: The normal way to implement the drag-dismiss functionality is by extending the two provided `Activities`: `DragDismissActivity` and `DragDismissRecyclerViewActivity`. If you would rather not do that, I have provided a delegate for each of these use-cases, that you can use: `DragDismissDelegate` and `DragDismissRecyclerViewDelegate`. To see an example of the delegate's usage, check out the [AbstractDragDismissActivity](https://github.com/klinker24/Android-DragDismissActivity/blob/master/library/src/main/java/xyz/klinker/android/drag_dismiss/activity/AbstractDragDismissActivity.java).*
 
-#### Replacing an Activity
+### Replacing an Activity
 
 This library is meant to replace your `AppCompatActivity`. I will set up all the drag-dismiss features for you, and wrap your content in a boilerplate UI that contains a `Toolbar` and a `ScrollView` for your content.
 
@@ -49,7 +49,7 @@ protected View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle
 
 For a very simple example, please see [DismissableActivityNormalContent Sample](https://github.com/klinker24/Android-DragDismissActivity/blob/master/sample/src/main/java/xyz/klinker/drag_dismiss/DismissableActivityNormalContent.java).
 
-#### Replacing an Activity with a RecyclerView
+### Replacing an Activity with a RecyclerView
 
 If you are using an `Activity` that just has a `RecyclerView` in it, then this library can do all the heavy-lifting for you, all you will need to do is set it up with a `RecyclerView.Adapter` and a `LayoutManager`.
 
