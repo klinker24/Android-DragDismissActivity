@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.4.1
+
+* Update dependencies
+  * Support library now has vastly improved nested scrolling (v26.0.0)
+
 ### v1.4.0
 
 * Create a `DragDismissDelegate` and `DragDismissRecyclerViewDelegate` to handle the drag-dismiss functionality, for those that don't want to extend the `DragDismissActivity` and `DragDismissRecyclerViewActivity`.

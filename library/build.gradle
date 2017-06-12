@@ -48,11 +48,11 @@ dependencies {
     compile "com.android.support:design:${ANDROID_SUPPORT_VERSION}"
 
     testCompile 'junit:junit:4.12'
-    testCompile "org.robolectric:robolectric:3.2.2"
-    testCompile 'org.mockito:mockito-all:1.9.5'
+    testCompile "org.robolectric:robolectric:3.3.2"
+    testCompile 'org.mockito:mockito-all:1.10.8'
     testCompile 'org.powermock:powermock-mockito-release-full:1.6.1'
     testCompile 'org.powermock:powermock-module-junit4-rule:1.6.0'
-    testCompile 'org.powermock:powermock-api-mockito:1.6.0'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.1'
     testCompile 'org.powermock:powermock-classloading-xstream:1.6.0'
     testCompile 'org.apache.maven:maven-ant-tasks:2.1.3'
 }
