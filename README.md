@@ -19,7 +19,7 @@ To include it in your project, add this to your module's `build.gradle` file:
 ```groovy
 dependencies {
 	...
-	compile 'com.klinkerapps:drag-dismiss-activity:1.4.1'
+	compile 'com.klinkerapps:drag-dismiss-activity:1.4.2'
 }
 ```
 
@@ -40,9 +40,9 @@ This library is meant to replace your `AppCompatActivity`. I will set up all the
 protected View onCreateContent(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
     View v = inflater.inflate(R.layout.activity_scrollable, parent, false);
 
-    // do your normal view setup and Activity#onCreate lifecycle actions here, 
+    // do your normal view setup and Activity#onCreate lifecycle actions here,
     // instead of within the Activity#onCreate.
-    
+
     return v;
 }
 ```
@@ -64,7 +64,7 @@ If you are using an `Activity` that just has a `RecyclerView` in it, then this l
 protected void setupRecyclerView(RecyclerView recyclerView) {
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
     recyclerView.setAdapter(new SampleAdapter());
-    
+
     // do any other RecyclerView or Activity setup that needs to be done
 }
 ```

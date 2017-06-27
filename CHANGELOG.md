@@ -1,5 +1,10 @@
 # Changelog
 
+
+### v1.4.2
+
+* `finishAfterTransition` on activities, instead of `finish`
+
 ### v1.4.1
 
 * Update dependencies
