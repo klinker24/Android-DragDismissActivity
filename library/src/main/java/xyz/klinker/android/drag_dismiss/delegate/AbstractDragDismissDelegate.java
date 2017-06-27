@@ -130,7 +130,7 @@ public abstract class AbstractDragDismissDelegate {
             View.OnClickListener sideClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    activity.finish();
+                    activity.supportFinishAfterTransition();
                 }
             };
 
@@ -142,7 +142,7 @@ public abstract class AbstractDragDismissDelegate {
             @Override
             public void onDragDismissed() {
                 super.onDragDismissed();
-                activity.finish();
+                activity.supportFinishAfterTransition();
             }
         });
 
