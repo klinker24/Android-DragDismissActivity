@@ -1,6 +1,10 @@
 # Changelog
 
 
+### v1.4.3
+
+* Update support library and Gradle
+
 ### v1.4.2
 
 * `finishAfterTransition` on activities, instead of `finish`
