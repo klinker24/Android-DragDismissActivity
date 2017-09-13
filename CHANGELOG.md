@@ -1,6 +1,10 @@
 # Changelog
 
 
+### v1.4.4
+
+* Fix an issue with `adjustResize` not working correctly.
+
 ### v1.4.3
 
 * Update support library and Gradle
