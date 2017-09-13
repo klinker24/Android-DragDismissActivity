@@ -15,11 +15,12 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout
+<xyz.klinker.android.drag_dismiss.view.TransparentStatusBarInsetLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:fitsSystemWindows="true">
 
     <View
         android:layout_width="0dp"
@@ -89,4 +90,4 @@
         android:background="@color/dragdismiss_transparentSideBackground"
         android:id="@+id/dragdismiss_transparent_side_2"/>
 
-</LinearLayout>
+</xyz.klinker.android.drag_dismiss.view.TransparentStatusBarInsetLayout>

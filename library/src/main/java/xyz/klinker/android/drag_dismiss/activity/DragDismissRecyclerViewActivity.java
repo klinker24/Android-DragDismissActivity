@@ -16,8 +16,6 @@
 
 package xyz.klinker.android.drag_dismiss.activity;
 
-import android.support.v7.widget.RecyclerView;
-
 import xyz.klinker.android.drag_dismiss.delegate.AbstractDragDismissDelegate;
 import xyz.klinker.android.drag_dismiss.delegate.DragDismissRecyclerViewDelegate;
 
