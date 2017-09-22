@@ -20,16 +20,20 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import xyz.klinker.android.drag_dismiss.DragDismissIntentBuilder;
 import xyz.klinker.android.drag_dismiss.R;
 import xyz.klinker.android.drag_dismiss.util.ColorUtils;
+import xyz.klinker.android.drag_dismiss.util.StatusBarHelper;
 import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
 
 public abstract class AbstractDragDismissDelegate {
@@ -40,6 +44,7 @@ public abstract class AbstractDragDismissDelegate {
     
     private ProgressBar progressBar;
     private Toolbar toolbar;
+    private AppBarLayout appBarLayout;
     private View statusBar;
 
     private String dragElasticity;
@@ -61,6 +66,7 @@ public abstract class AbstractDragDismissDelegate {
 
         progressBar = (ProgressBar) activity.findViewById(R.id.dragdismiss_loading);
         toolbar = (Toolbar) activity.findViewById(R.id.dragdismiss_toolbar);
+        appBarLayout = (AppBarLayout) activity.findViewById(R.id.dragdismiss_app_bar);
         statusBar = activity.findViewById(R.id.dragdismiss_status_bar);
 
         setupToolbar();
@@ -113,6 +119,15 @@ public abstract class AbstractDragDismissDelegate {
 
         if (!shouldShowToolbar) {
             toolbar.setVisibility(View.GONE);
+        }
+
+        int statusBarHeight = StatusBarHelper.getStatusBarHeight(activity);
+        statusBar.getLayoutParams().height = statusBarHeight;
+
+        if (appBarLayout == null) {
+            ((CoordinatorLayout.LayoutParams) toolbar.getLayoutParams()).topMargin = statusBarHeight;
+        } else {
+            ((CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams()).topMargin = statusBarHeight;
         }
     }
 

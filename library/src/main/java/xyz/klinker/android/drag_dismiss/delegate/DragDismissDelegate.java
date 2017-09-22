@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.util.StatusBarHelper;
 import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
 
@@ -67,6 +68,8 @@ public class DragDismissDelegate extends AbstractDragDismissDelegate {
 
         FrameLayout elasticContent = (FrameLayout) activity.findViewById(R.id.dragdismiss_content);
         elasticContent.addView(callback.onCreateContent(activity.getLayoutInflater(), elasticContent, savedInstanceState));
+
+        ((NestedScrollView.LayoutParams) elasticContent.getLayoutParams()).topMargin = StatusBarHelper.getStatusBarHeight(activity);
     }
 
     @Override

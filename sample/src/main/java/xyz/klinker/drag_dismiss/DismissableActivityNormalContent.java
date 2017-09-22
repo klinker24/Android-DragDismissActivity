@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import xyz.klinker.android.drag_dismiss.DragDismissIntentBuilder;
 import xyz.klinker.android.drag_dismiss.activity.DragDismissActivity;
+import xyz.klinker.android.drag_dismiss.util.StatusBarHelper;
 
 public class DismissableActivityNormalContent extends DragDismissActivity {
 
@@ -36,7 +37,7 @@ public class DismissableActivityNormalContent extends DragDismissActivity {
 
         if (!getDragDismissDelegate().shouldShowToolbar()) {
             // don't need the padding that pushes it below the toolbar
-            tv.setPadding(0,0,0,0);
+            tv.setPadding(0, 0,0,0);
         }
 
         if (getIntent().getBooleanExtra(EXTRA_SHOW_PROGRESS, false)) {
