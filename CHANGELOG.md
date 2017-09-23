@@ -1,5 +1,11 @@
 # Changelog
 
+### v1.5.0
+
+* Don't assume 24dp for the status bar size (Essential Ph-1)
+* Add DragDismissIntentBuilder preference for whether or not you want to draw under the status bar.
+  * If not, the library will handle the content margin at the top, to take the status bar into account
+  * This is off by default, so the library is handling the status bar size, for you
 
 ### v1.4.4
 

@@ -54,6 +54,7 @@ public abstract class AbstractDragDismissDelegate {
     private int primaryColor;
     private boolean shouldShowToolbar;
     private boolean shouldScrollToolbar;
+    protected boolean drawUnderStatusBar;
     
     AbstractDragDismissDelegate(AppCompatActivity activity) {
         this.activity = activity;
@@ -101,6 +102,7 @@ public abstract class AbstractDragDismissDelegate {
             activity.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
         }
 
+        this.drawUnderStatusBar = activity.getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_DRAW_UNDER_STATUS_BAR, false);
         this.fullscreenForTablets = activity.getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_FULLSCREEN_FOR_TABLETS, false);
         this.shouldScrollToolbar = activity.getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_SHOULD_SCROLL_TOOLBAR, true);
         this.shouldShowToolbar = activity.getIntent().getBooleanExtra(DragDismissIntentBuilder.EXTRA_SHOULD_SHOW_TOOLBAR, true);

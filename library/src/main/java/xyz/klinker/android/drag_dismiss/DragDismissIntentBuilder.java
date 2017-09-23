@@ -31,6 +31,7 @@ public class DragDismissIntentBuilder {
     public static final String EXTRA_SHOULD_SHOW_TOOLBAR = "extra_show_toolbar";
     public static final String EXTRA_SHOULD_SCROLL_TOOLBAR = "extra_scroll_toolbar";
     public static final String EXTRA_FULLSCREEN_FOR_TABLETS = "extra_fullscreen_tablets";
+    public static final String EXTRA_DRAW_UNDER_STATUS_BAR = "extra_draw_under_status_bar";
 
     public static final int DEFAULT_TOOLBAR_RESOURCE = R.color.dragdismiss_toolbarBackground;
 
@@ -49,6 +50,7 @@ public class DragDismissIntentBuilder {
     private boolean shouldShowToolbar = true;
     private boolean shouldScrollToolbar = true;
     private boolean fullscreen = false;
+    private boolean drawUnderStatusBar = false;
 
     private Context context;
 
@@ -73,6 +75,7 @@ public class DragDismissIntentBuilder {
         intentToBuildOn.putExtra(EXTRA_SHOULD_SHOW_TOOLBAR, shouldShowToolbar);
         intentToBuildOn.putExtra(EXTRA_SHOULD_SCROLL_TOOLBAR, shouldScrollToolbar);
         intentToBuildOn.putExtra(EXTRA_FULLSCREEN_FOR_TABLETS, fullscreen);
+        intentToBuildOn.putExtra(EXTRA_DRAW_UNDER_STATUS_BAR, drawUnderStatusBar);
 
         return intentToBuildOn;
     }
@@ -162,6 +165,21 @@ public class DragDismissIntentBuilder {
      */
     public DragDismissIntentBuilder setFullscreenOnTablets(boolean fullscreen) {
         this.fullscreen = fullscreen;
+        return this;
+    }
+
+    /**
+     * Set whether or not you want to place content under the status bar manually, in your layout. If not,
+     * this library will handle the content margins to account for the status bar. Remember that not all
+     * phones have the same size status bar. This will only apply for the {@link xyz.klinker.android.drag_dismiss.delegate.DragDismissDelegate}, not
+     * the {@link xyz.klinker.android.drag_dismiss.delegate.DragDismissRecyclerViewDelegate}.
+     * You will need to always handle the RecyclerView yourself. A header View is a great way to do that.
+     *
+     * @param drawUnderStatusBar
+     * @return the builder.
+     */
+    public DragDismissIntentBuilder setDrawUnderStatusBar(boolean drawUnderStatusBar) {
+        this.drawUnderStatusBar = drawUnderStatusBar;
         return this;
     }
 }

@@ -69,7 +69,9 @@ public class DragDismissDelegate extends AbstractDragDismissDelegate {
         FrameLayout elasticContent = (FrameLayout) activity.findViewById(R.id.dragdismiss_content);
         elasticContent.addView(callback.onCreateContent(activity.getLayoutInflater(), elasticContent, savedInstanceState));
 
-        ((NestedScrollView.LayoutParams) elasticContent.getLayoutParams()).topMargin = StatusBarHelper.getStatusBarHeight(activity);
+        if (!drawUnderStatusBar) {
+            ((NestedScrollView.LayoutParams) elasticContent.getLayoutParams()).topMargin = StatusBarHelper.getStatusBarHeight(activity);
+        }
     }
 
     @Override
