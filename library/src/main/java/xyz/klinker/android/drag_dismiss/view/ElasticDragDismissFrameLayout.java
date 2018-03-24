@@ -23,6 +23,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
@@ -63,6 +64,7 @@ public class ElasticDragDismissFrameLayout extends FrameLayout {
     private float totalDrag;
     private boolean draggingDown = false;
     private boolean draggingUp = false;
+    private int lastEventAction = Integer.MIN_VALUE;
 
     private boolean enabled = true;
 
@@ -153,6 +155,12 @@ public class ElasticDragDismissFrameLayout extends FrameLayout {
     }
 
     @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        lastEventAction = ev.getAction();
+        return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
     public void onStopNestedScroll(View child) {
         if (enabled) {
             if (Math.abs(totalDrag) >= dragDismissDistance) {
@@ -162,14 +170,24 @@ public class ElasticDragDismissFrameLayout extends FrameLayout {
                     fastOutSlowInInterpolator = AnimationUtils.loadInterpolator(getContext(),
                             android.R.interpolator.fast_out_slow_in);
                 }
-                getChildAt(0).animate()
-                        .translationY(0f)
-                        .scaleX(1f)
-                        .scaleY(1f)
-                        .setDuration(200L)
-                        .setInterpolator(fastOutSlowInInterpolator)
-                        .setListener(null)
-                        .start();
+
+                if (lastEventAction == MotionEvent.ACTION_DOWN) {
+                    // this is a 'defensive cleanup for new gestures',
+                    // don't animate here
+                    // see also https://github.com/nickbutcher/plaid/issues/185
+                    setTranslationY(0f);
+                    setScaleX(1f);
+                    setScaleY(1f);
+                } else {
+                    getChildAt(0).animate()
+                            .translationY(0f)
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .setDuration(200L)
+                            .setInterpolator(fastOutSlowInInterpolator)
+                            .setListener(null)
+                            .start();
+                }
 
                 ValueAnimator animator = null;
                 if (draggingUp) {

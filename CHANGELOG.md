@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.5.1
+
+* Smooth out the drag dismiss animation
+
 ### v1.5.0
 
 * Don't assume 24dp for the status bar size (Essential Ph-1)
