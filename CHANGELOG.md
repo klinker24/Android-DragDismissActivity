@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.6.0
+
+* Use Android Jetpack dependencies
+
 ### v1.5.1
 
 * Smooth out the drag dismiss animation
