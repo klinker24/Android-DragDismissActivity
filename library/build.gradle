@@ -49,11 +49,10 @@ android {
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:1.0.0-rc01"
-    implementation "androidx.appcompat:appcompat:1.0.0-rc01"
-    implementation "androidx.recyclerview:recyclerview:1.0.0-rc01"
-    implementation "androidx.coordinatorlayout:coordinatorlayout:1.0.0-rc01"
-    implementation "com.google.android.material:material:1.0.0-rc01"
+    api "androidx.appcompat:appcompat:${ANDROID_X_VERSION}"
+    api "androidx.recyclerview:recyclerview:${ANDROID_X_VERSION}"
+    api "androidx.coordinatorlayout:coordinatorlayout:${ANDROID_X_VERSION}"
+    api "com.google.android.material:material:${ANDROID_X_VERSION}"
 
     testImplementation 'junit:junit:4.12'
     testImplementation "org.robolectric:robolectric:3.8"
