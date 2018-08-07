@@ -18,9 +18,9 @@ package xyz.klinker.drag_dismiss;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
 import xyz.klinker.android.drag_dismiss.DragDismissIntentBuilder;
 
 public class SampleActivity extends AppCompatActivity {
