@@ -17,9 +17,9 @@
 package xyz.klinker.android.drag_dismiss.delegate;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import xyz.klinker.android.drag_dismiss.R;
 import xyz.klinker.android.drag_dismiss.util.ColorUtils;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;

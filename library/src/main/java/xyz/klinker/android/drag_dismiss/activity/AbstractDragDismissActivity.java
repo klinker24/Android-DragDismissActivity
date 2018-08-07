@@ -17,10 +17,10 @@
 package xyz.klinker.android.drag_dismiss.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 
+import androidx.appcompat.app.AppCompatActivity;
 import xyz.klinker.android.drag_dismiss.delegate.AbstractDragDismissDelegate;
 
 /**

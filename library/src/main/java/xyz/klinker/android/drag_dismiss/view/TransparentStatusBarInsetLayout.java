@@ -18,10 +18,11 @@ package xyz.klinker.android.drag_dismiss.view;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.WindowInsets;
 import android.widget.LinearLayout;
+
+import androidx.annotation.Nullable;
 
 public class TransparentStatusBarInsetLayout extends LinearLayout {
     private int[] mInsets = new int[4];

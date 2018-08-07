@@ -54,6 +54,10 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:${ANDROID_SUPPORT_VERSION}"
-    compile project(":library")
+    implementation project(":library")
+
+    implementation "androidx.appcompat:appcompat:${ANDROID_X_VERSION}"
+    implementation "androidx.recyclerview:recyclerview:${ANDROID_X_VERSION}"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:${ANDROID_X_VERSION}"
+    implementation "com.google.android.material:material:${ANDROID_X_VERSION}"
 }

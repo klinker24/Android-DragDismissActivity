@@ -49,17 +49,19 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:${ANDROID_SUPPORT_VERSION}"
-    compile "com.android.support:design:${ANDROID_SUPPORT_VERSION}"
+    implementation "androidx.appcompat:appcompat:${ANDROID_X_VERSION}"
+    implementation "androidx.recyclerview:recyclerview:${ANDROID_X_VERSION}"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:${ANDROID_X_VERSION}"
+    implementation "com.google.android.material:material:${ANDROID_X_VERSION}"
 
-    testCompile 'junit:junit:4.12'
-    testCompile "org.robolectric:robolectric:3.6.1"
-    testCompile 'org.mockito:mockito-all:1.10.8'
-    testCompile 'org.powermock:powermock-mockito-release-full:1.6.1'
-    testCompile 'org.powermock:powermock-module-junit4-rule:1.6.0'
-    testCompile 'org.powermock:powermock-api-mockito:1.6.1'
-    testCompile 'org.powermock:powermock-classloading-xstream:1.6.0'
-    testCompile 'org.apache.maven:maven-ant-tasks:2.1.3'
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation 'org.mockito:mockito-all:1.10.19'
+    testImplementation 'org.powermock:powermock-mockito-release-full:1.6.1'
+    testImplementation 'org.powermock:powermock-module-junit4-rule:1.6.0'
+    testImplementation 'org.powermock:powermock-api-mockito:1.6.1'
+    testImplementation 'org.powermock:powermock-classloading-xstream:1.6.0'
+    testImplementation 'org.apache.maven:maven-ant-tasks:2.1.3'
 }
 
 apply from: 'https://raw.github.com/klinker24/gradle-mvn-push/master/gradle-mvn-push.gradle'

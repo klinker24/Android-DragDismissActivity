@@ -16,9 +16,8 @@
 
 package xyz.klinker.drag_dismiss;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import xyz.klinker.android.drag_dismiss.activity.DragDismissRecyclerViewActivity;
 import xyz.klinker.drag_dismiss.adapter.SampleAdapter;
 

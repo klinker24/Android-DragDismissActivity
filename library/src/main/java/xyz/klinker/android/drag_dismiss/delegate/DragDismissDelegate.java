@@ -17,13 +17,13 @@
 package xyz.klinker.android.drag_dismiss.delegate;
 
 import android.os.Bundle;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import xyz.klinker.android.drag_dismiss.R;
 import xyz.klinker.android.drag_dismiss.util.StatusBarHelper;
 import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;

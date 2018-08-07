@@ -21,13 +21,14 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v7.widget.RecyclerView;
 import android.widget.EdgeEffect;
 import android.widget.ProgressBar;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Class used to help with the Material Design Color palette, which is created
@@ -48,7 +49,7 @@ public final class ColorUtils {
     /**
      * Darkens a given color.
      *
-     * @param base base color
+     * @param base   base color
      * @param amount amount between 0 and 100
      * @return darken color
      */
@@ -83,8 +84,8 @@ public final class ColorUtils {
         if (nsat > 1f)
             nsat = 1f;
 
-        return new float[] {
-                hue,  nsat, nhue / 2f
+        return new float[]{
+                hue, nsat, nhue / 2f
         };
     }
 
@@ -102,7 +103,7 @@ public final class ColorUtils {
 
         sat *= light < .5 ? light : 1 - light;
 
-        return new float[] {
+        return new float[]{
                 hue, 2f * sat / (light + sat), light + sat
         };
     }
