@@ -16,7 +16,7 @@
   -->
 
 <resources>
-    <color name="dragdismiss_windowBackground">#374248</color>
+    <color name="dragdismiss_windowBackground">#202B30</color>
     <color name="dragdismiss_imageBackground">#202B30</color>
     <color name="dragdismiss_primaryText">#FFFFFFFF</color>
     <color name="dragdismiss_secondaryText">#B2FFFFFF</color>
