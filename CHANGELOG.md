@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.6.1
+
+* Update dark theme background
+
 ### v1.6.0
 
 * Use Android Jetpack dependencies
