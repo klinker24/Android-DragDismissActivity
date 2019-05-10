@@ -36,7 +36,7 @@ public class SampleActivity extends AppCompatActivity {
                 Intent scrollable = new Intent(SampleActivity.this, DismissableActivityNormalContent.class);
 
                 new DragDismissIntentBuilder(SampleActivity.this)
-                        .setTheme(DragDismissIntentBuilder.Theme.LIGHT)
+                        .setTheme(DragDismissIntentBuilder.Theme.SYSTEM_DEFAULT)
                         .setPrimaryColorResource(R.color.colorPrimary)
                         .setToolbarTitle("Normal Activity Sample")
                         .build(scrollable);

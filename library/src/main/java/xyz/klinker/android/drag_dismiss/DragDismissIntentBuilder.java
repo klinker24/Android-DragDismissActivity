@@ -43,7 +43,7 @@ public class DragDismissIntentBuilder {
         NORMAL, LARGE, XLARGE, XXLARGE
     }
 
-    private Theme theme = Theme.LIGHT;
+    private Theme theme = Theme.SYSTEM_DEFAULT;
     private DragElasticity dragElasticity = DragElasticity.NORMAL;
     private int primaryColor = -1;
     private String toolbarTitle = null;
