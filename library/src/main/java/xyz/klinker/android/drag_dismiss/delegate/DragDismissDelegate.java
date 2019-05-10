@@ -16,18 +16,25 @@
 
 package xyz.klinker.android.drag_dismiss.delegate;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.OnApplyWindowInsetsListener;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.core.widget.NestedScrollView;
 import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.util.AndroidVersionUtils;
 import xyz.klinker.android.drag_dismiss.util.StatusBarHelper;
 import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
+import xyz.klinker.android.drag_dismiss.view.TransparentStatusBarInsetLayout;
 
 public class DragDismissDelegate extends AbstractDragDismissDelegate {
 
@@ -61,6 +68,14 @@ public class DragDismissDelegate extends AbstractDragDismissDelegate {
                     }
                 }
             });
+            if (AndroidVersionUtils.isAndroidQ()) {
+                transparentStatusBarLayout.setOnApplyInsetsListener(new TransparentStatusBarInsetLayout.AppliedInsets() {
+                    @Override @SuppressLint("NewApi")
+                    public void onApplyInsets(WindowInsets insets) {
+                        scrollView.setPadding(0, 0, 0, insets.getSystemWindowInsetBottom());
+                    }
+                });
+            }
         } else {
             getToolbar().setBackgroundColor(getPrimaryColor());
             getStatusBar().setBackgroundColor(getPrimaryColor());

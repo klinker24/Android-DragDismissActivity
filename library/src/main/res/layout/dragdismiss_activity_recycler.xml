@@ -17,6 +17,7 @@
 
 <xyz.klinker.android.drag_dismiss.view.TransparentStatusBarInsetLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dragdismiss_transparentStatusBarLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
@@ -46,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical"
+                android:clipToPadding="false"
                 app:behavior_overlapTop="?attr/actionBarSize" />
 
             <ProgressBar

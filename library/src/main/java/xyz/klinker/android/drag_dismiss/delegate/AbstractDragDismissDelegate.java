@@ -30,11 +30,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.ViewCompat;
+
 import xyz.klinker.android.drag_dismiss.DragDismissIntentBuilder;
 import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.util.AndroidVersionUtils;
 import xyz.klinker.android.drag_dismiss.util.ColorUtils;
 import xyz.klinker.android.drag_dismiss.util.StatusBarHelper;
 import xyz.klinker.android.drag_dismiss.view.ElasticDragDismissFrameLayout;
+import xyz.klinker.android.drag_dismiss.view.TransparentStatusBarInsetLayout;
 
 public abstract class AbstractDragDismissDelegate {
     
@@ -46,6 +50,7 @@ public abstract class AbstractDragDismissDelegate {
     private Toolbar toolbar;
     private AppBarLayout appBarLayout;
     private View statusBar;
+    protected TransparentStatusBarInsetLayout transparentStatusBarLayout;
 
     private String dragElasticity;
     private String theme;
@@ -69,10 +74,16 @@ public abstract class AbstractDragDismissDelegate {
         toolbar = (Toolbar) activity.findViewById(R.id.dragdismiss_toolbar);
         appBarLayout = (AppBarLayout) activity.findViewById(R.id.dragdismiss_app_bar);
         statusBar = activity.findViewById(R.id.dragdismiss_status_bar);
+        transparentStatusBarLayout = activity.findViewById(R.id.dragdismiss_transparentStatusBarLayout);
 
         setupToolbar();
         setupDragDismiss();
         changeColors();
+
+        if (AndroidVersionUtils.isAndroidQ()) {
+            int newSystemUiFlags = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+            statusBar.setSystemUiVisibility(newSystemUiFlags);
+        }
     }
 
     /**

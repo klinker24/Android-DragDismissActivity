@@ -16,13 +16,17 @@
 
 package xyz.klinker.android.drag_dismiss.delegate;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.WindowInsets;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import xyz.klinker.android.drag_dismiss.R;
+import xyz.klinker.android.drag_dismiss.util.AndroidVersionUtils;
 import xyz.klinker.android.drag_dismiss.util.ColorUtils;
 import xyz.klinker.android.drag_dismiss.view.ToolbarScrollListener;
+import xyz.klinker.android.drag_dismiss.view.TransparentStatusBarInsetLayout;
 
 public class DragDismissRecyclerViewDelegate extends AbstractDragDismissDelegate {
 
@@ -41,13 +45,22 @@ public class DragDismissRecyclerViewDelegate extends AbstractDragDismissDelegate
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        RecyclerView recyclerView = (RecyclerView) activity.findViewById(R.id.dragdismiss_recycler);
+        final RecyclerView recyclerView = (RecyclerView) activity.findViewById(R.id.dragdismiss_recycler);
 
         if (shouldScrollToolbar() && shouldShowToolbar()) {
             recyclerView.addOnScrollListener(new ToolbarScrollListener(getToolbar(), getStatusBar(), getPrimaryColor()));
         } else {
             getToolbar().setBackgroundColor(getPrimaryColor());
             getStatusBar().setBackgroundColor(getPrimaryColor());
+        }
+
+        if (AndroidVersionUtils.isAndroidQ()) {
+            transparentStatusBarLayout.setOnApplyInsetsListener(new TransparentStatusBarInsetLayout.AppliedInsets() {
+                @Override @SuppressLint("NewApi")
+                public void onApplyInsets(WindowInsets insets) {
+                    recyclerView.setPadding(0, 0, 0, insets.getSystemWindowInsetBottom());
+                }
+            });
         }
 
         ColorUtils.changeRecyclerOverscrollColors(recyclerView, getPrimaryColor());

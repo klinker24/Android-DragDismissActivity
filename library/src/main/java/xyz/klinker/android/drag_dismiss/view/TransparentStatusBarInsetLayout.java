@@ -24,8 +24,11 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
+import xyz.klinker.android.drag_dismiss.util.AndroidVersionUtils;
+
 public class TransparentStatusBarInsetLayout extends LinearLayout {
     private int[] mInsets = new int[4];
+    private AppliedInsets appliedInsetsListener = null;
 
     public TransparentStatusBarInsetLayout(Context context) {
         super(context);
@@ -39,16 +42,31 @@ public class TransparentStatusBarInsetLayout extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    public void setOnApplyInsetsListener(AppliedInsets listener) {
+        this.appliedInsetsListener = listener;
+    }
+
     @Override
     public final WindowInsets onApplyWindowInsets(WindowInsets insets) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
             mInsets[0] = insets.getSystemWindowInsetLeft();
             mInsets[1] = insets.getSystemWindowInsetTop();
             mInsets[2] = insets.getSystemWindowInsetRight();
-            return super.onApplyWindowInsets(insets.replaceSystemWindowInsets(0, 0, 0,
-                    insets.getSystemWindowInsetBottom()));
+            if (AndroidVersionUtils.isAndroidQ()) {
+                if (appliedInsetsListener != null) {
+                    appliedInsetsListener.onApplyInsets(insets);
+                }
+                return super.onApplyWindowInsets(insets.replaceSystemWindowInsets(0, 0, 0, 0));
+            } else {
+                return super.onApplyWindowInsets(insets.replaceSystemWindowInsets(0, 0, 0,
+                        insets.getSystemWindowInsetBottom()));
+            }
         } else {
             return insets;
         }
+    }
+
+    public interface AppliedInsets {
+        void onApplyInsets(WindowInsets insets);
     }
 }
