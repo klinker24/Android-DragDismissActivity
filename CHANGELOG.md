@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.7.0
+
+* Add system default option for Android Q's theming capabilities
+
 ### v1.6.1
 
 * Update dark theme background

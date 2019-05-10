@@ -98,6 +98,8 @@ public abstract class AbstractDragDismissDelegate {
             activity.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else if (DragDismissIntentBuilder.Theme.BLACK.name().equals(theme)) {
             activity.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else if (DragDismissIntentBuilder.Theme.SYSTEM_DEFAULT.name().equals(theme)) {
+            activity.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         } else {
             activity.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
         }

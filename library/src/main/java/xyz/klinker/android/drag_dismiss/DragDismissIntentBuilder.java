@@ -36,7 +36,7 @@ public class DragDismissIntentBuilder {
     public static final int DEFAULT_TOOLBAR_RESOURCE = R.color.dragdismiss_toolbarBackground;
 
     public enum Theme {
-        LIGHT, DARK, BLACK, DAY_NIGHT
+        LIGHT, DARK, BLACK, DAY_NIGHT, SYSTEM_DEFAULT
     }
 
     public enum DragElasticity {

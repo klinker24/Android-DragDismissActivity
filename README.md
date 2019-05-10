@@ -19,7 +19,7 @@ To include it in your project, add this to your module's `build.gradle` file:
 ```groovy
 dependencies {
 	...
-	compile 'com.klinkerapps:drag-dismiss-activity:1.6.1'
+	compile 'com.klinkerapps:drag-dismiss-activity:1.7.0'
 }
 ```
 
@@ -81,7 +81,7 @@ I have provided a [DragDismissBundleBuilder](https://github.com/klinker24/Androi
 Intent dragDismissActivity = new Intent(this, MyDragDismissActivity.class);
 
 new DragDismissBundleBuilder(context)
-    .setTheme(DragDismissBundleBuilder.Theme.LIGHT)	// LIGHT (default), DARK, BLACK, DAY_NIGHT
+    .setTheme(DragDismissBundleBuilder.Theme.LIGHT)	// LIGHT (default), DARK, BLACK, DAY_NIGHT, SYSTEM_DEFAULT
     .setPrimaryColorResource(R.color.colorPrimary)	// defaults to a semi-transparent black
     .setToolbarTitle("Normal Activity Sample")		// defaults to null
     .setShowToolbar(true)				// defaults to true
@@ -117,7 +117,7 @@ The full changelog for the library can be found [here](https://github.com/klinke
 
 ## License
 
-    Copyright 2017 Luke Klinker
+    Copyright 2019 Luke Klinker
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

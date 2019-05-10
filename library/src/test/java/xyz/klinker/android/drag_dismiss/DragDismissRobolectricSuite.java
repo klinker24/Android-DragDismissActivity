@@ -31,7 +31,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = {16, 19, 21, 25}, constants = BuildConfig.class)
+@Config(sdk = {16, 19, 21, 25})
 public abstract class DragDismissRobolectricSuite {
 
     @Before
