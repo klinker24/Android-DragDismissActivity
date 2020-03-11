@@ -2,6 +2,8 @@
 
 # Android Drag Dismiss Activity
 
+[![API](https://img.shields.io/badge/MinSDK-15%2B-green)](https://github.com/klinker24/Android-DragDismissActivity/blob/master/gradle.properties#L20)
+
 Another implementation of the drag-to-dismiss `Activity` pattern. This one is inspired by Nick Butcher's [Plaid](https://github.com/nickbutcher/plaid/blob/master/app/src/main/java/io/plaidapp/ui/widget/ElasticDragDismissFrameLayout.java) implementation.
 
 The project has a simple API and is a pretty powerful and beautiful implementation of the pattern. This library is used in some of my apps ([Talon for Twitter](https://play.google.com/store/apps/details?id=com.klinker.android.twitter_l) and [Pulse SMS](https://play.google.com/store/apps/details?id=xyz.klinker.messenger)). It has been abstracted from Jacob Klinker and I's [article-android](https://github.com/klinker41/article-android/) library, which is an awesome readability style in-app web browser.
